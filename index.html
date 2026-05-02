@@ -191,7 +191,7 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
   background:linear-gradient(135deg,var(--orange) 0%,#b85a0e 100%);
   padding:22px 24px;text-align:center;
 }
-.ck-head img{height:50px;object-fit:contain;margin-bottom:10px;display:block;margin:0 auto 10px}
+.ck-head img{height:50px;object-fit:contain;margin-bottom:10px;display:block;margin:0 auto 10px;background:#000;border-radius:10px;padding:6px 10px}
 .ck-head h2{color:#fff;font-size:18px;font-weight:900;margin-bottom:4px}
 .ck-head p{color:rgba(255,255,255,.8);font-size:13px}
 
@@ -203,16 +203,16 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
   font-size:13px;color:#7a5a00;font-weight:700;
 }
 
-.ck-body{padding:20px}
+.ck-body{padding:14px 16px}
 
 /* section titles */
 .ck-sec-title{
-  font-size:13px;font-weight:800;
-  color:#333;margin-bottom:10px;
+  font-size:12px;font-weight:800;
+  color:#333;margin-bottom:7px;
   display:flex;align-items:center;gap:6px;
 }
 .ck-sec-title .num{
-  width:20px;height:20px;
+  width:18px;height:18px;
   background:var(--orange);color:#fff;
   border-radius:50%;font-size:11px;
   display:flex;align-items:center;justify-content:center;
@@ -220,7 +220,7 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 }
 
 /* inputs */
-.ck-input-row{margin-bottom:12px}
+.ck-input-row{margin-bottom:8px}
 .ck-input-row label{
   display:block;font-size:11px;
   color:#888;font-weight:600;
@@ -228,9 +228,9 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 }
 .ck-input-row input,
 .ck-input-row select{
-  width:100%;padding:11px 14px;
+  width:100%;padding:9px 12px;
   border:1.5px solid #e8e8e8;
-  border-radius:10px;font-size:14px;
+  border-radius:10px;font-size:13px;
   font-family:'Cairo',sans-serif;
   font-weight:600;color:#111;
   background:#fafafa;
@@ -255,11 +255,11 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 /* delivery cards */
 .delivery-grid{
   display:grid;grid-template-columns:1fr 1fr;
-  gap:10px;margin-bottom:14px;
+  gap:8px;margin-bottom:10px;
 }
 .del-card{
   border:2px solid #e8e8e8;border-radius:12px;
-  padding:14px 10px;cursor:pointer;
+  padding:10px 8px;cursor:pointer;
   text-align:center;background:#fafafa;
   transition:all .2s;position:relative;
   user-select:none;-webkit-user-select:none;
@@ -268,15 +268,15 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 .del-card.active-home{border-color:var(--orange);background:#fff7f0}
 .del-card.active-office{border-color:var(--navy);background:#f0f4f9}
 .del-check{
-  position:absolute;top:8px;left:8px;
-  width:18px;height:18px;border-radius:50%;
+  position:absolute;top:6px;left:6px;
+  width:16px;height:16px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .2s;
 }
 .del-card.active-home .del-check{opacity:1;background:var(--orange)}
 .del-card.active-office .del-check{opacity:1;background:var(--navy)}
 .del-check svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.del-icon{width:60px;height:60px;margin:0 auto 6px;display:block}
+.del-icon{width:44px;height:44px;margin:0 auto 4px;display:block}
 .del-title{font-size:12px;font-weight:800;color:#111;margin-bottom:2px}
 .del-card.active-home .del-title{color:var(--orange)}
 .del-card.active-office .del-title{color:var(--navy)}
@@ -288,32 +288,32 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 .ck-summary{
   background:#fffbf5;
   border:1.5px dashed #e8c88a;
-  border-radius:12px;padding:14px;
-  margin-bottom:14px;
+  border-radius:12px;padding:10px;
+  margin-bottom:10px;
 }
 .sum-prod{font-size:11px;color:#aaa;margin-bottom:2px}
-.sum-prod-name{font-size:12px;font-weight:700;color:#333;margin-bottom:12px;line-height:1.5}
-.sum-row{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:6px}
+.sum-prod-name{font-size:12px;font-weight:700;color:#333;margin-bottom:8px;line-height:1.5}
+.sum-row{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-bottom:5px}
 .sum-row .val{font-weight:700;color:#333}
-.sum-divider{border:none;border-top:1px solid #eee;margin:8px 0}
-.sum-total{display:flex;justify-content:space-between;font-size:15px;font-weight:900}
-.sum-total .tv{color:var(--orange);font-size:17px}
+.sum-divider{border:none;border-top:1px solid #eee;margin:6px 0}
+.sum-total{display:flex;justify-content:space-between;font-size:14px;font-weight:900}
+.sum-total .tv{color:var(--orange);font-size:16px}
 
 /* cod */
 .ck-cod{
   display:flex;align-items:center;justify-content:center;gap:6px;
   background:#f0faf4;border:1px solid #b8e5c8;
-  border-radius:10px;padding:9px;
+  border-radius:10px;padding:7px;
   font-size:12px;font-weight:700;color:var(--green);
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 
 /* submit */
 #ckSubmitBtn{
-  width:100%;padding:16px;
+  width:100%;padding:13px;
   background:linear-gradient(135deg,#1a8a4a,#105c32);
   color:#fff;border:none;border-radius:12px;
-  font-size:16px;font-weight:800;cursor:pointer;
+  font-size:15px;font-weight:800;cursor:pointer;
   font-family:'Cairo',sans-serif;
   box-shadow:0 6px 20px rgba(26,138,74,.4);
   transition:opacity .2s,transform .1s;
@@ -547,7 +547,7 @@ footer p{font-size:11px;color:#333}
 
       <div class="store-badge">
         <span class="pulse"></span>
-        عرض محدود — آخر القطع
+        BHK Store — جهاز IPL الأصلي
       </div>
 
       <h1>
@@ -611,11 +611,6 @@ footer p{font-size:11px;color:#333}
           <img src="https://i.ibb.co/Fq37Qhbr/1000023331-removebg-preview.png" alt="BHK Store">
           <h2>اطلبي الآن — دفع عند الاستلام</h2>
           <p>أدخلي معلوماتك وراح نتواصل معاكي في أقرب وقت</p>
-        </div>
-
-        <div class="ck-urgency">
-          <span style="font-size:16px">⏰</span>
-          آخر 12 قطعة — الطلبات تتزايد!
         </div>
 
         <div class="ck-body">
