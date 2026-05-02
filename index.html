@@ -188,10 +188,12 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 }
 
 .ck-head{
-  background:linear-gradient(135deg,var(--orange) 0%,#b85a0e 100%);
-  padding:22px 24px;text-align:center;
+  background:#111;
+  padding:16px 24px 14px;text-align:center;
+  border-bottom:3px solid var(--orange);
 }
-.ck-head img{height:50px;object-fit:contain;margin-bottom:10px;display:block;margin:0 auto 10px;background:#000;border-radius:10px;padding:6px 10px}
+.ck-head h2{color:#fff;font-size:16px;font-weight:900;margin-bottom:2px}
+.ck-head p{color:rgba(255,255,255,.6);font-size:12px}
 .ck-head h2{color:#fff;font-size:18px;font-weight:900;margin-bottom:4px}
 .ck-head p{color:rgba(255,255,255,.8);font-size:13px}
 
@@ -203,34 +205,34 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
   font-size:13px;color:#7a5a00;font-weight:700;
 }
 
-.ck-body{padding:14px 16px}
+.ck-body{padding:10px 14px}
 
 /* section titles */
 .ck-sec-title{
-  font-size:12px;font-weight:800;
-  color:#333;margin-bottom:7px;
-  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:800;
+  color:#333;margin-bottom:6px;
+  display:flex;align-items:center;gap:5px;
 }
 .ck-sec-title .num{
-  width:18px;height:18px;
+  width:16px;height:16px;
   background:var(--orange);color:#fff;
-  border-radius:50%;font-size:11px;
+  border-radius:50%;font-size:9px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
 
 /* inputs */
-.ck-input-row{margin-bottom:8px}
+.ck-input-row{margin-bottom:7px}
 .ck-input-row label{
-  display:block;font-size:11px;
+  display:block;font-size:10px;
   color:#888;font-weight:600;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 .ck-input-row input,
 .ck-input-row select{
-  width:100%;padding:9px 12px;
+  width:100%;padding:7px 10px;
   border:1.5px solid #e8e8e8;
-  border-radius:10px;font-size:13px;
+  border-radius:8px;font-size:13px;
   font-family:'Cairo',sans-serif;
   font-weight:600;color:#111;
   background:#fafafa;
@@ -242,7 +244,7 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 
 .ck-input-row input[type=tel]{direction:ltr;text-align:left}
 
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .row2 .ck-input-row{margin-bottom:0}
 .sel-wrap{position:relative}
 .sel-arrow{
@@ -255,11 +257,11 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 /* delivery cards */
 .delivery-grid{
   display:grid;grid-template-columns:1fr 1fr;
-  gap:8px;margin-bottom:10px;
+  gap:7px;margin-bottom:8px;
 }
 .del-card{
-  border:2px solid #e8e8e8;border-radius:12px;
-  padding:10px 8px;cursor:pointer;
+  border:2px solid #e8e8e8;border-radius:10px;
+  padding:8px 6px;cursor:pointer;
   text-align:center;background:#fafafa;
   transition:all .2s;position:relative;
   user-select:none;-webkit-user-select:none;
@@ -268,19 +270,19 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 .del-card.active-home{border-color:var(--orange);background:#fff7f0}
 .del-card.active-office{border-color:var(--navy);background:#f0f4f9}
 .del-check{
-  position:absolute;top:6px;left:6px;
-  width:16px;height:16px;border-radius:50%;
+  position:absolute;top:5px;left:5px;
+  width:14px;height:14px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .2s;
 }
 .del-card.active-home .del-check{opacity:1;background:var(--orange)}
 .del-card.active-office .del-check{opacity:1;background:var(--navy)}
-.del-check svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.del-icon{width:44px;height:44px;margin:0 auto 4px;display:block}
-.del-title{font-size:12px;font-weight:800;color:#111;margin-bottom:2px}
+.del-check svg{width:8px;height:8px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.del-icon{width:38px;height:38px;margin:0 auto 4px;display:block}
+.del-title{font-size:11px;font-weight:800;color:#111;margin-bottom:1px}
 .del-card.active-home .del-title{color:var(--orange)}
 .del-card.active-office .del-title{color:var(--navy)}
-.del-price{font-size:11px;color:#888;font-weight:600}
+.del-price{font-size:10px;color:#888;font-weight:600}
 .del-card.active-home .del-price{color:var(--orange)}
 .del-card.active-office .del-price{color:var(--navy)}
 
@@ -288,34 +290,34 @@ body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(-
 .ck-summary{
   background:#fffbf5;
   border:1.5px dashed #e8c88a;
-  border-radius:12px;padding:10px;
-  margin-bottom:10px;
+  border-radius:10px;padding:8px 10px;
+  margin-bottom:8px;
 }
-.sum-prod{font-size:11px;color:#aaa;margin-bottom:2px}
-.sum-prod-name{font-size:12px;font-weight:700;color:#333;margin-bottom:8px;line-height:1.5}
-.sum-row{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-bottom:5px}
+.sum-prod{font-size:10px;color:#aaa;margin-bottom:1px}
+.sum-prod-name{font-size:11px;font-weight:700;color:#333;margin-bottom:7px;line-height:1.4}
+.sum-row{display:flex;justify-content:space-between;font-size:11px;color:#666;margin-bottom:4px}
 .sum-row .val{font-weight:700;color:#333}
-.sum-divider{border:none;border-top:1px solid #eee;margin:6px 0}
-.sum-total{display:flex;justify-content:space-between;font-size:14px;font-weight:900}
-.sum-total .tv{color:var(--orange);font-size:16px}
+.sum-divider{border:none;border-top:1px solid #eee;margin:5px 0}
+.sum-total{display:flex;justify-content:space-between;font-size:13px;font-weight:900}
+.sum-total .tv{color:var(--orange);font-size:14px}
 
 /* cod */
 .ck-cod{
-  display:flex;align-items:center;justify-content:center;gap:6px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
   background:#f0faf4;border:1px solid #b8e5c8;
-  border-radius:10px;padding:7px;
-  font-size:12px;font-weight:700;color:var(--green);
-  margin-bottom:10px;
+  border-radius:8px;padding:6px;
+  font-size:11px;font-weight:700;color:var(--green);
+  margin-bottom:8px;
 }
 
 /* submit */
 #ckSubmitBtn{
-  width:100%;padding:13px;
+  width:100%;padding:12px;
   background:linear-gradient(135deg,#1a8a4a,#105c32);
-  color:#fff;border:none;border-radius:12px;
-  font-size:15px;font-weight:800;cursor:pointer;
+  color:#fff;border:none;border-radius:10px;
+  font-size:14px;font-weight:800;cursor:pointer;
   font-family:'Cairo',sans-serif;
-  box-shadow:0 6px 20px rgba(26,138,74,.4);
+  box-shadow:0 4px 14px rgba(26,138,74,.4);
   transition:opacity .2s,transform .1s;
 }
 #ckSubmitBtn:active{transform:scale(.98)}
@@ -608,7 +610,23 @@ footer p{font-size:11px;color:#333}
       <div class="checkout-box">
 
         <div class="ck-head">
-          <img src="https://i.ibb.co/Fq37Qhbr/1000023331-removebg-preview.png" alt="BHK Store">
+          <!-- SVG Logo BHK Store -->
+          <svg width="130" height="52" viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 8px">
+            <!-- BHK text -->
+            <text x="130" y="58" text-anchor="middle"
+              font-family="Arial Black,Arial,sans-serif"
+              font-weight="900" font-size="62"
+              fill="#1e2d4a"
+              letter-spacing="-2">BHK</text>
+            <!-- orange swoosh -->
+            <path d="M44,72 Q130,58 216,72 Q200,90 130,88 Q60,90 44,72Z" fill="#dc6e14"/>
+            <!-- STORE text on swoosh -->
+            <text x="130" y="84" text-anchor="middle"
+              font-family="Arial Black,Arial,sans-serif"
+              font-weight="900" font-size="20"
+              fill="#fff"
+              letter-spacing="3">STORE</text>
+          </svg>
           <h2>اطلبي الآن — دفع عند الاستلام</h2>
           <p>أدخلي معلوماتك وراح نتواصل معاكي في أقرب وقت</p>
         </div>
