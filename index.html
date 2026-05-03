@@ -7,1093 +7,771 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --orange:#dc6e14;
-  --orange-dark:#b85a0e;
-  --orange-light:#fff4ed;
-  --green:#1a8a4a;
-  --green-light:#f0faf4;
-  --navy:#1e3a5f;
-  --navy-light:#f0f4f9;
-  --dark:#111;
-  --card:#1a1a1a;
-  --border:#2a2a2a;
-  --txt:#fff;
-  --txt2:#aaa;
-  --txt3:#666;
-}
+:root{--og:#dc6e14;--og2:#b85a0e;--gn:#1a7a3c;--gn2:#145e2e;--dk:#f5f0e8;--c1:#1a1a1a;--c2:#fff;--bd:#e0d8cc;--t1:#1a1a1a;--t2:#666;--t3:#999}
 html{scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;direction:rtl;background:#0d0d0d;color:var(--txt);overflow-x:hidden;line-height:1.6}
+body{font-family:'Cairo',sans-serif;direction:rtl;background:#f5f0e8;color:#1a1a1a;overflow-x:hidden}
 
-/* ══ TICKER ══ */
-.ticker{background:var(--orange);padding:9px 0;overflow:hidden;white-space:nowrap;position:sticky;top:0;z-index:100}
-.ticker-inner{display:inline-flex;animation:ticker 22s linear infinite}
-.ticker-item{font-size:13px;font-weight:700;color:#fff;padding:0 28px}
-.ticker-sep{color:rgba(255,255,255,.5)}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* TICKER */
+.ticker{background:var(--og);padding:8px 0;overflow:hidden;white-space:nowrap;position:sticky;top:0;z-index:200}
+.ti{display:inline-flex;animation:tk 20s linear infinite}
+.ts{font-size:13px;font-weight:700;color:#fff;padding:0 24px}
+@keyframes tk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ══ HERO CHECKOUT SECTION ══ */
-.hero-checkout{
-  background: linear-gradient(160deg,#0d0d0d 0%,#161210 50%,#0d0d0d 100%);
-  padding: 48px 20px 64px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-checkout::before{
-  content:'';position:absolute;
-  top:-200px;right:-200px;
-  width:500px;height:500px;
-  background:radial-gradient(circle,rgba(220,110,20,.12) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero-checkout::after{
-  content:'';position:absolute;
-  bottom:-200px;left:-200px;
-  width:400px;height:400px;
-  background:radial-gradient(circle,rgba(220,110,20,.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-
-.hero-inner{
-  max-width:1000px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:48px;
-  align-items:start;
-}
-@media(max-width:720px){
-  .hero-inner{grid-template-columns:1fr;gap:32px}
-  .hero-left{order:2}
-  .hero-right{order:1}
-}
-
-/* ── LEFT SIDE (product info) ── */
-.hero-left{position:relative;z-index:1}
-
-.store-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(220,110,20,.15);
-  border:1px solid rgba(220,110,20,.35);
-  border-radius:100px;padding:5px 14px;
-  font-size:12px;color:#f0a050;
-  margin-bottom:20px;
-}
-.pulse{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.6)}}
-
-.hero-left h1{
-  font-size:clamp(26px,4vw,42px);
-  font-weight:900;line-height:1.2;
-  margin-bottom:14px;
-}
-.hero-left h1 .acc{color:var(--orange)}
-.hero-left h1 .acc2{
-  background:linear-gradient(90deg,var(--orange),#f0a050);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-
-.hero-sub{font-size:15px;color:var(--txt2);margin-bottom:24px;line-height:1.8}
+/* HERO */
+.hero{background:linear-gradient(170deg,#ede7d8,#f0ead8,#ede7d8);padding:40px 16px 50px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-150px;right:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(220,110,20,.08),transparent 70%);pointer-events:none}
+.hero-top{text-align:center;margin-bottom:28px}
+.hero-logo img{height:60px;object-fit:contain;margin-bottom:16px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(220,110,20,.15);border:1px solid rgba(220,110,20,.3);border-radius:100px;padding:5px 14px;font-size:12px;color:#f0a050;margin-bottom:16px}
+.pulse{width:7px;height:7px;background:var(--og);border-radius:50%;animation:pu 1.5s infinite}
+@keyframes pu{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.6)}}
+.hero h1{font-size:clamp(24px,5vw,40px);font-weight:900;line-height:1.2;margin-bottom:12px}
+.hero h1 .o{color:var(--og)}
+.hero{color:#1a1a1a}
+.hero-sub{font-size:14px;color:#555;line-height:1.8;max-width:480px;margin:0 auto 20px}
 
 /* product image */
-.product-visual{
-  position:relative;
-  display:flex;justify-content:center;
-  margin-bottom:28px;
-}
-.product-visual img{
-  width:200px;height:auto;
-  filter:drop-shadow(0 0 40px rgba(220,110,20,.35));
-  animation:float 4s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.glow-ring{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:220px;height:220px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(220,110,20,.15) 0%,transparent 70%);
-  pointer-events:none;
-}
+.prod-img{display:flex;justify-content:center;margin-bottom:20px;position:relative}
+.prod-img img{width:180px;filter:drop-shadow(0 0 36px rgba(220,110,20,.4));animation:fl 4s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(220,110,20,.12),transparent 70%);pointer-events:none}
 
-/* price block */
-.price-block{
-  display:flex;align-items:center;gap:16px;
-  margin-bottom:20px;flex-wrap:wrap;
-}
-.price-old{font-size:20px;color:var(--txt3);text-decoration:line-through}
-.price-new{font-size:48px;font-weight:900;color:#fff;line-height:1}
-.price-new span{font-size:18px;color:var(--txt2);font-weight:400}
-.price-tag{
-  background:var(--orange);color:#fff;
-  font-size:13px;font-weight:700;
-  padding:5px 14px;border-radius:6px;
-  align-self:flex-start;margin-top:8px;
-}
+/* rating strip */
+.rating-strip{display:flex;align-items:center;justify-content:center;gap:12px;background:rgba(255,255,255,.6);border:1px solid rgba(220,110,20,.2);border-radius:12px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap}
+.r-stars{color:var(--og);font-size:18px}
+.r-txt{font-size:13px;color:#555}
+.r-txt b{color:#1a1a1a;font-weight:700}
+.r-avs{display:flex}
+.av{width:28px;height:28px;border-radius:50%;border:2px solid #0d0d0d;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-right:-7px}
 
-/* guarantees */
-.guarantees{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:10px;margin-bottom:28px;
-}
-.g-item{
-  display:flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:10px;padding:10px 12px;
-  font-size:13px;color:var(--txt2);
-}
-.g-icon{font-size:18px;flex-shrink:0}
+/* price */
+.price-hero{text-align:center;margin-bottom:20px}
+.p-old{font-size:18px;color:var(--t3);text-decoration:line-through;margin-bottom:4px}
+.p-new{font-size:52px;font-weight:900;line-height:1}
+.p-new small{font-size:18px;color:var(--t2);font-weight:400}
+.p-free{font-size:13px;color:var(--og);margin-top:4px;font-weight:700}
 
-/* specs pills */
-.specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.spec{
-  background:rgba(220,110,20,.1);
-  border:1px solid rgba(220,110,20,.25);
-  border-radius:100px;padding:5px 14px;
-  font-size:12px;color:#f0a050;
-}
+/* CTA button hero */
+.btn-order{display:block;width:100%;max-width:420px;margin:0 auto 12px;padding:17px;background:linear-gradient(135deg,var(--gn),var(--gn2));color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 6px 24px rgba(26,122,60,.45);transition:transform .2s}
+.btn-order:active{transform:scale(.97)}
+.cod-note{text-align:center;font-size:13px;color:#1a8a4a;font-weight:700;margin-bottom:4px}
 
-/* social proof */
-.social-proof{
-  display:flex;align-items:center;gap:12px;
-  padding:14px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:12px;
-}
-.avatars{display:flex}
-.av{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--orange);border:2px solid #0d0d0d;
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:700;color:#fff;
-  margin-right:-8px;
-}
-.av:nth-child(2){background:#c25e10}
-.av:nth-child(3){background:#a04f0d}
-.social-text{font-size:13px;color:var(--txt2)}
-.social-text b{color:#fff;font-weight:700}
-.stars-sm{color:var(--orange);font-size:12px;display:block}
+/* trust row */
+.trust-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.tr{font-size:12px;color:#666;display:flex;align-items:center;gap:5px}
+.tr-dot{width:5px;height:5px;background:var(--og);border-radius:50%}
 
-/* ── RIGHT SIDE (checkout form) ── */
-.hero-right{position:relative;z-index:1}
+/* SECTION base */
+.sec{padding:52px 16px}
+.sec.lt{background:#eee8db;color:#1a1a1a}
+.sec.dk{background:#f0ead8}
+.sec.dkr{background:#f5f0e8}
+.sec-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1px;padding:4px 14px;border-radius:100px;margin-bottom:10px}
+.sec-tag.og{background:rgba(220,110,20,.15);border:1px solid rgba(220,110,20,.3);color:var(--og)}
+.sec-tag.gn{background:rgba(26,122,60,.15);border:1px solid rgba(26,122,60,.3);color:#2aaa5c}
+.sec-title{font-size:clamp(20px,4vw,30px);font-weight:900;margin-bottom:8px;text-align:center;color:#1a1a1a}
+.sec-sub{font-size:14px;color:#555;text-align:center;max-width:480px;margin:0 auto 32px;line-height:1.8}
+.sec.lt .sec-title{color:#1a1a1a}
+.sec.lt .sec-sub{color:#555}
+.sec-center{text-align:center}
 
-.checkout-box{
+/* BEFORE/AFTER */
+.ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:700px;margin:0 auto}
+.ba-card{border-radius:14px;overflow:hidden;position:relative;background:#ede7d8;border:1px solid #ddd5c5}
+.ba-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.ba-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:10px 10px 12px;display:flex;justify-content:space-between;align-items:flex-end}
+.ba-b{font-size:11px;color:#aaa;font-weight:700}
+.ba-a{font-size:11px;color:#2aaa5c;font-weight:700}
+.ba-result{background:rgba(26,122,60,.9);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;display:inline-block;margin-top:8px;text-align:center}
+
+/* OFFER BOX */
+.offer-box{
   background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 0 0 1px rgba(220,110,20,.3),0 24px 60px rgba(0,0,0,.5);
-  font-family:'Cairo',sans-serif;
+  border-radius:20px;overflow:hidden;
+  max-width:540px;margin:0 auto;
+  box-shadow:0 0 0 2px var(--gn),0 20px 50px rgba(0,0,0,.5);
 }
+.offer-head{
+  background:linear-gradient(135deg,var(--gn),var(--gn2));
+  padding:20px 24px;text-align:center;
+}
+.offer-head h2{color:#fff;font-size:20px;font-weight:900;margin-bottom:4px}
+.offer-head p{color:rgba(255,255,255,.8);font-size:13px}
+.offer-urgency{background:#fff8dc;border-bottom:1px solid #f0d880;padding:9px 16px;display:flex;align-items:center;gap:8px;font-size:13px;color:#7a5800;font-weight:700}
+.offer-body{padding:18px 20px}
 
-.ck-head{
-  background:#111;
-  padding:16px 24px 14px;text-align:center;
-  border-bottom:3px solid var(--orange);
-}
-.ck-head h2{color:#fff;font-size:16px;font-weight:900;margin-bottom:2px}
-.ck-head p{color:rgba(255,255,255,.6);font-size:12px}
-.ck-head h2{color:#fff;font-size:18px;font-weight:900;margin-bottom:4px}
-.ck-head p{color:rgba(255,255,255,.8);font-size:13px}
-
-.ck-urgency{
-  background:#fff3cd;
-  border-bottom:1px solid #f0d080;
-  padding:10px 20px;
-  display:flex;align-items:center;gap:8px;
-  font-size:13px;color:#7a5a00;font-weight:700;
-}
-
-.ck-body{padding:10px 14px}
-
-/* section titles */
-.ck-sec-title{
-  font-size:11px;font-weight:800;
-  color:#333;margin-bottom:6px;
-  display:flex;align-items:center;gap:5px;
-}
-.ck-sec-title .num{
-  width:16px;height:16px;
-  background:var(--orange);color:#fff;
-  border-radius:50%;font-size:9px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-
-/* inputs */
-.ck-input-row{margin-bottom:7px}
-.ck-input-row label{
-  display:block;font-size:10px;
-  color:#888;font-weight:600;
-  margin-bottom:3px;
-}
-.ck-input-row input,
-.ck-input-row select{
-  width:100%;padding:7px 10px;
-  border:1.5px solid #e8e8e8;
-  border-radius:8px;font-size:13px;
-  font-family:'Cairo',sans-serif;
-  font-weight:600;color:#111;
+/* package card inside offer */
+.pkg{
+  border:2px solid #e0e0e0;
+  border-radius:14px;padding:16px;margin-bottom:16px;
   background:#fafafa;
   transition:border-color .2s;
-  appearance:none;-webkit-appearance:none;
 }
-.ck-input-row input:focus,
-.ck-input-row select:focus{border-color:var(--orange);background:#fff;outline:none}
+.pkg h3{font-size:16px;font-weight:900;color:#111;margin-bottom:4px}
+.pkg .pkg-desc{font-size:13px;color:#666;line-height:1.6;margin-bottom:12px}
+.pkg-price-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pkg-old{font-size:15px;color:#aaa;text-decoration:line-through}
+.pkg-new{font-size:32px;font-weight:900;color:var(--gn)}
+.pkg-new small{font-size:15px;font-weight:400;color:#888}
+.pkg-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0}
+.badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(26,122,60,.1);color:#1a7a3c;border:1px solid rgba(26,122,60,.2)}
+.badge.og{background:rgba(220,110,20,.1);color:var(--og);border-color:rgba(220,110,20,.2)}
 
-.ck-input-row input[type=tel]{direction:ltr;text-align:left}
+/* inputs */
+.ck-sec-title{font-size:12px;font-weight:800;color:#444;margin:14px 0 8px;display:flex;align-items:center;gap:6px}
+.ck-sec-title .nm{width:18px;height:18px;background:var(--gn);color:#fff;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inp{margin-bottom:10px}
+.inp label{display:block;font-size:11px;color:#888;font-weight:600;margin-bottom:4px}
+.inp input,.inp select{width:100%;padding:10px 12px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:14px;font-family:'Cairo',sans-serif;font-weight:600;color:#111;background:#f9f9f9;appearance:none;-webkit-appearance:none;transition:border-color .2s;outline:none}
+.inp input:focus,.inp select:focus{border-color:var(--gn);background:#fff}
+.inp input[type=tel]{direction:ltr;text-align:left}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2 .inp{margin-bottom:0}
+.sel-w{position:relative}
+.sel-ar{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#aaa;font-size:11px;pointer-events:none}
 
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.row2 .ck-input-row{margin-bottom:0}
-.sel-wrap{position:relative}
-.sel-arrow{
-  position:absolute;left:12px;top:50%;
-  transform:translateY(-50%);
-  color:#aaa;font-size:11px;
-  pointer-events:none;
-}
-
-/* delivery cards */
-.delivery-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:7px;margin-bottom:8px;
-}
-.del-card{
-  border:2px solid #e8e8e8;border-radius:10px;
-  padding:8px 6px;cursor:pointer;
-  text-align:center;background:#fafafa;
-  transition:all .2s;position:relative;
-  user-select:none;-webkit-user-select:none;
-}
+/* delivery */
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.del-card{border:2px solid #e0e0e0;border-radius:10px;padding:10px 8px;cursor:pointer;text-align:center;background:#f9f9f9;transition:all .2s;position:relative;user-select:none;-webkit-user-select:none}
 .del-card *{pointer-events:none}
-.del-card.active-home{border-color:var(--orange);background:#fff7f0}
-.del-card.active-office{border-color:var(--navy);background:#f0f4f9}
-.del-check{
-  position:absolute;top:5px;left:5px;
-  width:14px;height:14px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .2s;
-}
-.del-card.active-home .del-check{opacity:1;background:var(--orange)}
-.del-card.active-office .del-check{opacity:1;background:var(--navy)}
-.del-check svg{width:8px;height:8px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.del-icon{width:38px;height:38px;margin:0 auto 4px;display:block}
-.del-title{font-size:11px;font-weight:800;color:#111;margin-bottom:1px}
-.del-card.active-home .del-title{color:var(--orange)}
-.del-card.active-office .del-title{color:var(--navy)}
-.del-price{font-size:10px;color:#888;font-weight:600}
-.del-card.active-home .del-price{color:var(--orange)}
-.del-card.active-office .del-price{color:var(--navy)}
+.del-card.ah{border-color:var(--og);background:#fff7f0}
+.del-card.ao{border-color:#1e3a5f;background:#f0f4f9}
+.del-chk{position:absolute;top:6px;left:6px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.del-card.ah .del-chk{opacity:1;background:var(--og)}
+.del-card.ao .del-chk{opacity:1;background:#1e3a5f}
+.del-chk svg{width:9px;height:9px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.del-icon{width:44px;height:44px;margin:0 auto 5px;display:block}
+.del-title{font-size:12px;font-weight:800;color:#111;margin-bottom:2px}
+.del-card.ah .del-title{color:var(--og)}
+.del-card.ao .del-title{color:#1e3a5f}
+.del-price{font-size:11px;color:#888;font-weight:600}
+.del-card.ah .del-price{color:var(--og)}
+.del-card.ao .del-price{color:#1e3a5f}
 
 /* summary */
-.ck-summary{
-  background:#fffbf5;
-  border:1.5px dashed #e8c88a;
-  border-radius:10px;padding:8px 10px;
-  margin-bottom:8px;
-}
-.sum-prod{font-size:10px;color:#aaa;margin-bottom:1px}
-.sum-prod-name{font-size:11px;font-weight:700;color:#333;margin-bottom:7px;line-height:1.4}
-.sum-row{display:flex;justify-content:space-between;font-size:11px;color:#666;margin-bottom:4px}
-.sum-row .val{font-weight:700;color:#333}
-.sum-divider{border:none;border-top:1px solid #eee;margin:5px 0}
-.sum-total{display:flex;justify-content:space-between;font-size:13px;font-weight:900}
-.sum-total .tv{color:var(--orange);font-size:14px}
+.ck-sum{background:#f9fdf9;border:1.5px dashed #7ecfa0;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.sum-prod{font-size:11px;color:#aaa;margin-bottom:2px}
+.sum-pname{font-size:12px;font-weight:700;color:#333;margin-bottom:10px;line-height:1.5}
+.sum-row{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-bottom:5px}
+.sum-row .v{font-weight:700;color:#333}
+.sum-div{border:none;border-top:1px solid #e8e8e8;margin:7px 0}
+.sum-tot{display:flex;justify-content:space-between;font-size:14px;font-weight:900}
+.sum-tot .tv{color:var(--gn);font-size:16px}
 
 /* cod */
-.ck-cod{
-  display:flex;align-items:center;justify-content:center;gap:5px;
-  background:#f0faf4;border:1px solid #b8e5c8;
-  border-radius:8px;padding:6px;
-  font-size:11px;font-weight:700;color:var(--green);
-  margin-bottom:8px;
-}
+.ck-cod{display:flex;align-items:center;justify-content:center;gap:6px;background:#f0faf4;border:1px solid #b8e5c8;border-radius:8px;padding:8px;font-size:12px;font-weight:700;color:var(--gn);margin-bottom:10px}
 
 /* submit */
-#ckSubmitBtn{
-  width:100%;padding:12px;
-  background:linear-gradient(135deg,#1a8a4a,#105c32);
-  color:#fff;border:none;border-radius:10px;
-  font-size:14px;font-weight:800;cursor:pointer;
-  font-family:'Cairo',sans-serif;
-  box-shadow:0 4px 14px rgba(26,138,74,.4);
-  transition:opacity .2s,transform .1s;
-}
+#ckSubmitBtn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gn),var(--gn2));color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 5px 18px rgba(26,122,60,.4);transition:opacity .2s,transform .1s}
 #ckSubmitBtn:active{transform:scale(.98)}
 #ckSubmitBtn:disabled{opacity:.6}
 
-/* ══ SECTIONS BELOW ══ */
-.section{padding:60px 20px}
-.section.dark{background:#111}
-.section.darker{background:#0d0d0d}
-.sec-label{
-  display:inline-block;
-  background:rgba(220,110,20,.15);
-  border:1px solid rgba(220,110,20,.3);
-  color:var(--orange);font-size:12px;font-weight:700;
-  padding:4px 14px;border-radius:100px;
-  margin-bottom:12px;letter-spacing:.5px;
-}
-.sec-title{font-size:clamp(22px,3.5vw,34px);font-weight:900;color:#fff;margin-bottom:8px;text-align:center}
-.sec-sub{font-size:14px;color:var(--txt2);text-align:center;max-width:500px;margin:0 auto 40px;line-height:1.8}
-.sec-center{text-align:center}
+/* WHY CARDS */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:880px;margin:0 auto}
+.why-card{background:#fff;border:1px solid #ddd5c5;border-radius:14px;padding:20px 16px;transition:border-color .3s,transform .3s}
+.why-card:hover{border-color:var(--gn);transform:translateY(-3px)}
+.why-icon{width:44px;height:44px;background:rgba(26,122,60,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.why-card h3{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:5px}
+.why-card p{font-size:12px;color:#666;line-height:1.7}
 
-/* why grid */
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:14px;max-width:900px;margin:0 auto;
-}
-.why-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:22px 18px;
-  transition:border-color .3s,transform .3s;
-}
-.why-card:hover{border-color:var(--orange);transform:translateY(-4px)}
-.why-icon{
-  width:46px;height:46px;
-  background:rgba(220,110,20,.15);
-  border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;margin-bottom:14px;
-}
-.why-card h3{font-size:14px;font-weight:800;color:#fff;margin-bottom:6px}
-.why-card p{font-size:12px;color:var(--txt3);line-height:1.7}
+/* INGREDIENTS */
+.ing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:760px;margin:0 auto}
+.ing-card{background:#fff;border-radius:14px;padding:18px;display:flex;gap:12px;align-items:flex-start;border:1px solid #eee}
+.ing-img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;background:#e8f5e9}
+.ing-body h4{font-size:13px;font-weight:800;color:#111;margin-bottom:4px}
+.ing-body p{font-size:12px;color:#666;line-height:1.6}
 
-/* compare table */
-.compare-wrap{max-width:700px;margin:0 auto}
-.compare-table{width:100%;border-collapse:collapse}
-.compare-table th{
-  background:var(--card);
-  padding:14px 16px;font-size:13px;
-  border-bottom:1px solid var(--border);
-}
-.compare-table th.highlight{
-  background:rgba(220,110,20,.15);
-  color:var(--orange);
-  border-bottom:2px solid var(--orange);
-}
-.compare-table td{
-  padding:12px 16px;font-size:13px;
-  color:var(--txt2);border-bottom:1px solid rgba(255,255,255,.04);
-  text-align:center;
-}
-.compare-table td:first-child{text-align:right;color:#fff;font-weight:600}
-.compare-table td.highlight{color:var(--orange);font-weight:700}
-.check-y{color:#1a8a4a;font-size:16px}
-.check-n{color:#555;font-size:16px}
+/* RESULTS */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:680px;margin:0 auto 40px}
+.res-card{background:#fff;border:1px solid #ddd5c5;border-radius:12px;padding:18px;text-align:center}
+.res-wk{font-size:10px;color:var(--og);letter-spacing:2px;margin-bottom:6px;font-weight:700}
+.res-n{font-size:34px;font-weight:900;color:#1a1a1a}
+.res-bar{height:4px;background:#ddd5c5;border-radius:100px;margin:8px 0;overflow:hidden}
+.res-fill{height:100%;border-radius:100px;background:var(--og)}
+.res-d{font-size:11px;color:#666}
 
-/* timeline */
-.timeline{max-width:700px;margin:0 auto}
-.tl-item{
-  display:flex;gap:20px;align-items:flex-start;
-  margin-bottom:28px;
-}
-.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.tl-num{
-  width:48px;height:48px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  font-size:18px;font-weight:900;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.tl-line{width:2px;flex:1;background:rgba(220,110,20,.2);min-height:30px;margin-top:4px}
-.tl-item:last-child .tl-line{display:none}
-.tl-content h3{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;margin-top:10px}
-.tl-content p{font-size:13px;color:var(--txt2);line-height:1.7}
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;max-width:900px;margin:0 auto}
+.rev-card{background:#fff;border-radius:14px;padding:18px;border:1px solid #e8e8e8}
+.rev-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2aaa5c,#1a7a3c);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.rev-name{font-size:14px;font-weight:800;color:#111}
+.rev-loc{font-size:11px;color:#888}
+.rev-stars{color:#f0a050;font-size:13px;margin-bottom:8px}
+.rev-txt{font-size:13px;color:#444;line-height:1.8}
+.rev-likes{margin-top:10px;font-size:11px;color:#aaa;border-top:1px solid #f0f0f0;padding-top:8px}
 
-/* results */
-.results-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:14px;max-width:700px;margin:0 auto 48px;
-}
-.res-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;padding:20px;text-align:center;
-}
-.res-week{font-size:10px;color:var(--orange);letter-spacing:2px;margin-bottom:8px;font-weight:700}
-.res-pct{font-size:36px;font-weight:900;color:#fff}
-.res-bar{height:5px;background:#222;border-radius:100px;margin:10px 0;overflow:hidden}
-.res-fill{height:100%;border-radius:100px;background:var(--orange)}
-.res-desc{font-size:12px;color:var(--txt3)}
-
-/* reviews */
-.rev-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;max-width:900px;margin:0 auto;
-}
-.rev-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;padding:20px;
-}
-.rev-stars{color:var(--orange);font-size:14px;margin-bottom:10px}
-.rev-text{font-size:13px;color:var(--txt2);line-height:1.8;margin-bottom:12px}
-.rev-name{font-size:12px;color:var(--txt3);border-top:1px solid var(--border);padding-top:10px}
+/* COMPARE */
+.cmp-wrap{max-width:680px;margin:0 auto;overflow-x:auto}
+.cmp-tbl{width:100%;border-collapse:collapse;min-width:400px}
+.cmp-tbl th{padding:13px 14px;font-size:12px;background:#ede7d8;color:#1a1a1a;border-bottom:1px solid #ddd5c5}
+.cmp-tbl th.hl{background:rgba(26,122,60,.15);color:#2aaa5c;border-bottom:2px solid #2aaa5c}
+.cmp-tbl td{padding:11px 14px;font-size:12px;color:#555;border-bottom:1px solid #ede7d8;text-align:center}
+.cmp-tbl td:first-child{text-align:right;color:#1a1a1a;font-weight:700}
+.cmp-tbl td.hl{color:#2aaa5c;font-weight:700}
+.cy{color:#2aaa5c;font-size:15px}
+.cn{color:#444;font-size:15px}
 
 /* FAQ */
-.faq-list{max-width:700px;margin:0 auto}
-.faq-item{
-  border:1px solid var(--border);
-  border-radius:12px;margin-bottom:10px;
-  overflow:hidden;
-}
-.faq-q{
-  padding:16px 20px;font-size:14px;font-weight:700;
-  color:#fff;cursor:pointer;
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--card);
-}
-.faq-q .arrow{
-  width:20px;height:20px;
-  border-radius:50%;background:rgba(220,110,20,.15);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;color:var(--orange);flex-shrink:0;
-  transition:transform .3s;
-}
-.faq-a{
-  padding:0 20px;max-height:0;overflow:hidden;
-  transition:max-height .3s ease,padding .3s;
-  font-size:13px;color:var(--txt2);line-height:1.8;
-  background:var(--card);
-}
-.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px}
-.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-list{max-width:680px;margin:0 auto}
+.faq-item{border:1px solid #ddd5c5;border-radius:12px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px 18px;font-size:14px;font-weight:700;color:#1a1a1a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff}
+.faq-arr{width:20px;height:20px;border-radius:50%;background:rgba(26,122,60,.15);display:flex;align-items:center;justify-content:center;font-size:12px;color:#2aaa5c;flex-shrink:0;transition:transform .3s}
+.faq-a{padding:0 18px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;font-size:13px;color:#555;line-height:1.8;background:#fff}
+.faq-item.open .faq-a{max-height:200px;padding:0 18px 14px}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+
+/* CERT */
+.cert-box{max-width:700px;margin:0 auto;background:#fff;border:1px solid #ddd5c5;border-radius:16px;padding:28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.cert-icon{width:80px;height:80px;flex-shrink:0;background:rgba(26,122,60,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px}
+.cert-body h3{font-size:16px;font-weight:800;color:#1a1a1a;margin-bottom:6px}
+.cert-body p{font-size:13px;color:#555;line-height:1.7}
 
 /* CTA bottom */
-.cta-bottom{
-  background:linear-gradient(135deg,rgba(220,110,20,.15),rgba(220,110,20,.05));
-  border:1px solid rgba(220,110,20,.25);
-  border-radius:20px;padding:40px 24px;
-  text-align:center;max-width:600px;margin:0 auto;
-}
-.cta-bottom h2{font-size:26px;font-weight:900;color:#fff;margin-bottom:10px}
-.cta-bottom p{font-size:14px;color:var(--txt2);margin-bottom:24px;line-height:1.8}
-.cta-btn{
-  background:var(--orange);color:#fff;
-  font-family:'Cairo',sans-serif;
-  font-size:17px;font-weight:800;
-  padding:16px 48px;border-radius:12px;
-  border:none;cursor:pointer;
-  box-shadow:0 6px 24px rgba(220,110,20,.4);
-  transition:transform .2s;display:inline-block;
-}
-.cta-btn:hover{transform:translateY(-3px)}
+.cta-btm{background:linear-gradient(135deg,rgba(26,122,60,.12),rgba(26,122,60,.05));border:1px solid rgba(26,122,60,.25);border-radius:20px;padding:36px 20px;text-align:center;max-width:560px;margin:0 auto}
+.cta-btm h2{font-size:24px;font-weight:900;margin-bottom:10px}
+.cta-btm p{font-size:14px;color:#555;margin-bottom:22px;line-height:1.8}
+.cta-go{display:inline-block;background:var(--gn);color:#fff;font-family:'Cairo',sans-serif;font-size:16px;font-weight:900;padding:15px 44px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 6px 22px rgba(26,122,60,.4);transition:transform .2s}
+.cta-go:hover{transform:translateY(-3px)}
 
-/* footer */
-footer{
-  background:#0a0a0a;
-  border-top:1px solid #1a1a1a;
-  padding:28px 20px;text-align:center;
-}
-.footer-trust{
-  display:flex;justify-content:center;
-  gap:20px;flex-wrap:wrap;margin-bottom:12px;
-}
-.ft{font-size:12px;color:var(--txt3);display:flex;align-items:center;gap:5px}
-.ft-dot{width:5px;height:5px;background:var(--orange);border-radius:50%}
-footer p{font-size:11px;color:#333}
+/* FOOTER */
+footer{background:#e8e0d0;border-top:1px solid #ccc5b5;padding:24px 16px;text-align:center}
+.ft-trust{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.ft{font-size:12px;color:#666;display:flex;align-items:center;gap:5px}
+.ft-dot{width:4px;height:4px;background:var(--gn);border-radius:50%}
+footer p{font-size:11px;color:#888}
 
 /* MODAL */
-.ck-modal{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.85);
-  display:none;justify-content:center;
-  align-items:center;z-index:9999;padding:20px;
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;justify-content:center;align-items:center;z-index:9999;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:32px 24px;text-align:center;max-width:340px;width:100%;border-top:5px solid var(--gn)}
+.modal-ico{font-size:54px;margin-bottom:12px}
+.modal-title{color:var(--gn);font-size:20px;font-weight:900;margin-bottom:8px}
+.modal-txt{font-size:14px;color:#555;margin-bottom:20px;line-height:1.8}
+.modal-btn{background:var(--gn);color:#fff;border:none;padding:13px;width:100%;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif}
+
+/* FLOATING BTN */
+.float-cta{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:9999;
+  background:linear-gradient(135deg,#1a7a3c,#145e2e);
+  color:#fff;font-family:"Cairo",sans-serif;
+  font-size:16px;font-weight:900;
+  padding:15px 44px;border-radius:100px;border:none;
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 8px 28px rgba(26,122,60,.5);
+  animation:fpulse 1.8s ease-in-out infinite;
+  transition:opacity .3s;
 }
-.ck-modal.show{display:flex}
-.modal-box{
-  background:#fff;border-radius:20px;
-  padding:32px 24px;text-align:center;
-  max-width:340px;width:100%;
-  border-top:5px solid var(--green);
-}
-.modal-icon{font-size:56px;margin-bottom:12px}
-.modal-title{color:var(--green);font-size:20px;font-weight:900;margin-bottom:8px}
-.modal-text{font-size:14px;color:#555;margin-bottom:20px;line-height:1.8}
-.modal-btn{
-  background:var(--green);color:#fff;border:none;
-  padding:14px;width:100%;border-radius:12px;
-  font-size:15px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;
+.float-cta.hidden{opacity:0;pointer-events:none}
+@keyframes fpulse{
+  0%,100%{transform:translateX(-50%) translateY(0) scale(1);box-shadow:0 8px 28px rgba(26,122,60,.5)}
+  50%{transform:translateX(-50%) translateY(-6px) scale(1.03);box-shadow:0 16px 40px rgba(26,122,60,.7)}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ TICKER ══ -->
+<!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">توصيل لـ 58 ولاية <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">الدفع عند الاستلام <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">التوصيل مجاناً <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">ضمان سنة كاملة <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">مليون ومضة <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">نظارة حماية مجانية <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">+5000 زبونة سعيدة <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">توصيل لـ 58 ولاية <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">الدفع عند الاستلام <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">التوصيل مجاناً <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">ضمان سنة كاملة <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">مليون ومضة <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">نظارة حماية مجانية <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">+5000 زبونة سعيدة <span class="ticker-sep">✦</span></span>
+  <div class="ti">
+    <span class="ts">توصيل لـ 58 ولاية <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">الدفع عند الاستلام <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">التوصيل مجاناً <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">ضمان سنة كاملة <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">مليون ومضة <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">+5000 زبونة سعيدة <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">توصيل لـ 58 ولاية <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">الدفع عند الاستلام <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">التوصيل مجاناً <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">ضمان سنة كاملة <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">مليون ومضة <span style="color:rgba(255,255,255,.5)">✦</span></span>
+    <span class="ts">+5000 زبونة سعيدة <span style="color:rgba(255,255,255,.5)">✦</span></span>
   </div>
 </div>
 
-<!-- ══ HERO + CHECKOUT ══ -->
-<section class="hero-checkout">
-  <div class="hero-inner">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-logo">
+      <svg width="140" height="56" viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto">
+  <text x="130" y="62" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="66" fill="#1a1a1a" letter-spacing="-2">BHK</text>
+  <path d="M44,74 Q130,60 216,74 Q200,92 130,90 Q60,92 44,74Z" fill="#dc6e14"/>
+  <text x="130" y="86" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="20" fill="#fff" letter-spacing="3">STORE</text>
+</svg>
+    </div>
+    <div class="hero-badge"><span class="pulse"></span>الحل النهائي لإزالة الشعر</div>
+    <h1>وداعاً لـ <span class="o">الشعر الزائد</span><br>نهائياً من بيتك</h1>
+    <p class="hero-sub">جهاز IPL الأصلي — تقنية الضوء النبضي اللي تستعملها كبرى العيادات. بدون صالون، بدون ألم، بدون ما تنفقي كل شهر.</p>
+  </div>
 
-    <!-- LEFT: product pitch -->
-    <div class="hero-left">
+  <div class="prod-img">
+    <div class="glow"></div>
+    <img src="https://i.ibb.co/4Zjbqgft/51xaov-Rhi-HL-AC-SX679-removebg-preview.png" alt="جهاز IPL">
+  </div>
 
-      <div class="store-badge">
-        <span class="pulse"></span>
-        BHK Store — جهاز IPL الأصلي
-      </div>
+  <div class="rating-strip" style="max-width:420px;margin:0 auto 20px">
+    <div class="r-avs">
+      <div class="av" style="background:#dc6e14">أم</div>
+      <div class="av" style="background:#c25e10">سر</div>
+      <div class="av" style="background:#a04f0d">نو</div>
+      <div class="av" style="background:#884010">حي</div>
+    </div>
+    <div class="r-stars">★★★★★</div>
+    <div class="r-txt"><b>4.9/5</b> — <b>+5,000</b> زبونة جزائرية راضية</div>
+  </div>
 
-      <h1>
-        وداعي لـ <span class="acc">الشعر الزائد</span><br>
-        نهائياً من <span class="acc2">بيتك</span>
-      </h1>
+  <div class="price-hero">
+    <div class="p-old">14,500 دج</div>
+    <div class="p-new">12,000 <small>دج</small></div>
+    <div class="p-free">🚚 التوصيل مجاناً لكل الولايات</div>
+  </div>
 
-      <p class="hero-sub">
-        جهاز IPL الأصلي — تقنية الضوء النبضي اللي تستعملها كبرى العيادات.<br>
-        بدون صالون، بدون ألم، بدون ما تنفقي في الشهر.
-      </p>
+  <button class="btn-order" onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'})">
+    اطلبي الآن — دفع عند الاستلام 🛒
+  </button>
+  <div class="cod-note">✅ ما تدفعيش قبل ما تستلمي الجهاز</div>
 
-      <div class="product-visual">
-        <div class="glow-ring"></div>
-        <img src="https://i.ibb.co/4Zjbqgft/51xaov-Rhi-HL-AC-SX679-removebg-preview.png" alt="جهاز IPL">
-      </div>
-
-      <div class="price-block">
-        <span class="price-old">14,500 دج</span>
-        <div>
-          <div class="price-new">12,000 <span>دج</span></div>
-          <div style="font-size:12px;color:var(--orange);margin-top:2px;font-weight:700">+ التوصيل مجاناً لكل الولايات</div>
-        </div>
-        <span class="price-tag">وفري 17%</span>
-      </div>
-
-      <div class="specs">
-        <span class="spec">مليون ومضة</span>
-        <span class="spec">5 مستويات</span>
-        <span class="spec">ضمان سنة</span>
-        <span class="spec">نظارة مجانية</span>
-        <span class="spec">آمن لكل بشرة</span>
-      </div>
-
-      <div class="guarantees">
-        <div class="g-item"><span class="g-icon">🚚</span>توصيل مجاني 58 ولاية</div>
-        <div class="g-item"><span class="g-icon">💳</span>دفع عند الاستلام</div>
-        <div class="g-item"><span class="g-icon">🛡️</span>ضمان سنة كاملة</div>
-        <div class="g-item"><span class="g-icon">📦</span>تغليف محكم وسريع</div>
-      </div>
-
-      <div class="social-proof">
-        <div class="avatars">
-          <div class="av">أم</div>
-          <div class="av">سر</div>
-          <div class="av">نو</div>
-        </div>
-        <div class="social-text">
-          <span class="stars-sm">★★★★★</span>
-          <b>+5,000</b> زبونة جزائرية راضية على الجهاز
-        </div>
-      </div>
-
-    </div><!-- /hero-left -->
-
-    <!-- RIGHT: checkout form -->
-    <div class="hero-right">
-      <div class="checkout-box">
-
-        <div class="ck-head">
-          <!-- SVG Logo BHK Store -->
-          <svg width="130" height="52" viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 8px">
-            <!-- BHK text -->
-            <text x="130" y="58" text-anchor="middle"
-              font-family="Arial Black,Arial,sans-serif"
-              font-weight="900" font-size="62"
-              fill="#1e2d4a"
-              letter-spacing="-2">BHK</text>
-            <!-- orange swoosh -->
-            <path d="M44,72 Q130,58 216,72 Q200,90 130,88 Q60,90 44,72Z" fill="#dc6e14"/>
-            <!-- STORE text on swoosh -->
-            <text x="130" y="84" text-anchor="middle"
-              font-family="Arial Black,Arial,sans-serif"
-              font-weight="900" font-size="20"
-              fill="#fff"
-              letter-spacing="3">STORE</text>
-          </svg>
-          <h2>اطلبي الآن — دفع عند الاستلام</h2>
-          <p>أدخلي معلوماتك وراح نتواصل معاكي في أقرب وقت</p>
-        </div>
-
-        <div class="ck-body">
-
-          <!-- بيانات الزبون -->
-          <div class="ck-sec-title"><span class="num">1</span> معلوماتك</div>
-
-          <div class="ck-input-row">
-            <label>الاسم الكامل</label>
-            <input type="text" id="ckName" placeholder="مثال: فاطمة بن علي" autocomplete="name">
-          </div>
-          <div class="ck-input-row">
-            <label>رقم الهاتف</label>
-            <input type="tel" id="ckPhone" inputmode="numeric" maxlength="10" placeholder="05XXXXXXXX" autocomplete="tel">
-          </div>
-
-          <!-- طريقة التوصيل -->
-          <div class="ck-sec-title" style="margin-top:16px"><span class="num">2</span> طريقة التوصيل</div>
-
-          <div class="delivery-grid">
-            <!-- منزل -->
-            <div id="ckHomeBox" class="del-card active-home" onclick="ckSelectDelivery('home')">
-              <div class="del-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-              <svg class="del-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="96" fill="#fff6ee" stroke="#e07b1a" stroke-width="5"/>
-                <polygon points="100,30 165,85 145,85 145,148 55,148 55,85 35,85" fill="#e07b1a" opacity="0.18"/>
-                <polyline points="35,85 100,30 165,85" fill="none" stroke="#e07b1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-                <rect x="55" y="85" width="90" height="63" rx="3" fill="none" stroke="#e07b1a" stroke-width="5"/>
-                <rect x="84" y="112" width="32" height="36" rx="3" fill="#e07b1a"/>
-                <rect x="62" y="97" width="22" height="18" rx="2" fill="#e07b1a" opacity="0.5"/>
-                <rect x="116" y="97" width="22" height="18" rx="2" fill="#e07b1a" opacity="0.5"/>
-                <ellipse cx="65" cy="170" rx="16" ry="16" fill="none" stroke="#1e3a5f" stroke-width="5"/>
-                <ellipse cx="140" cy="170" rx="16" ry="16" fill="none" stroke="#1e3a5f" stroke-width="5"/>
-                <path d="M81,170 L92,148 L128,148 L140,162" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M92,148 L99,132 L118,132" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round"/>
-                <rect x="108" y="134" width="24" height="20" rx="3" fill="#e07b1a"/>
-              </svg>
-              <div class="del-title">للمنزل</div>
-              <div class="del-price">مجانا 🎁</div>
-            </div>
-            <!-- مكتب -->
-            <div id="ckOfficeBox" class="del-card" onclick="ckSelectDelivery('office')">
-              <div class="del-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-              <svg class="del-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="96" fill="#f0f4f9" stroke="#1e3a5f" stroke-width="5"/>
-                <rect x="48" y="38" width="104" height="110" rx="4" fill="#1e3a5f" opacity="0.12"/>
-                <rect x="48" y="38" width="104" height="110" rx="4" fill="none" stroke="#1e3a5f" stroke-width="5"/>
-                <rect x="62" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="90" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="118" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="62" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="90" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="118" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="62" y="100" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="118" y="100" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
-                <rect x="86" y="112" width="28" height="36" rx="2" fill="#1e3a5f" opacity="0.7"/>
-                <ellipse cx="60" cy="172" rx="15" ry="15" fill="none" stroke="#1e3a5f" stroke-width="5"/>
-                <ellipse cx="138" cy="172" rx="15" ry="15" fill="none" stroke="#1e3a5f" stroke-width="5"/>
-                <path d="M75,172 L86,150 L122,150 L138,164" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M86,150 L93,134 L112,134" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round"/>
-                <rect x="102" y="136" width="22" height="17" rx="3" fill="#1e3a5f" opacity="0.85"/>
-              </svg>
-              <div class="del-title">للمكتب</div>
-              <div class="del-price">مجانا 🎁</div>
-            </div>
-          </div>
-
-          <!-- العنوان -->
-          <div class="ck-sec-title"><span class="num">3</span> العنوان</div>
-
-          <div class="row2" style="margin-bottom:12px">
-            <div class="ck-input-row">
-              <label>الولاية</label>
-              <div class="sel-wrap">
-                <select id="ckWilaya">
-                  <option value="">اختر</option>
-                  <option value="1">01 - أدرار</option><option value="2">02 - الشلف</option><option value="3">03 - الأغواط</option><option value="4">04 - أم البواقي</option><option value="5">05 - باتنة</option><option value="6">06 - بجاية</option><option value="7">07 - بسكرة</option><option value="8">08 - بشار</option><option value="9">09 - البليدة</option><option value="10">10 - البويرة</option><option value="11">11 - تمنراست</option><option value="12">12 - تبسة</option><option value="13">13 - تلمسان</option><option value="14">14 - تيارت</option><option value="15">15 - تيزي وزو</option><option value="16">16 - الجزائر</option><option value="17">17 - الجلفة</option><option value="18">18 - جيجل</option><option value="19">19 - سطيف</option><option value="20">20 - سعيدة</option><option value="21">21 - سكيكدة</option><option value="22">22 - سيدي بلعباس</option><option value="23">23 - عنابة</option><option value="24">24 - قالمة</option><option value="25">25 - قسنطينة</option><option value="26">26 - المدية</option><option value="27">27 - مستغانم</option><option value="28">28 - المسيلة</option><option value="29">29 - معسكر</option><option value="30">30 - ورقلة</option><option value="31">31 - وهران</option><option value="32">32 - البيض</option><option value="33">33 - إليزي</option><option value="34">34 - برج بوعريريج</option><option value="35">35 - بومرداس</option><option value="36">36 - الطارف</option><option value="37">37 - تندوف</option><option value="38">38 - تيسمسيلت</option><option value="39">39 - الوادي</option><option value="40">40 - خنشلة</option><option value="41">41 - سوق أهراس</option><option value="42">42 - تيبازة</option><option value="43">43 - ميلة</option><option value="44">44 - عين الدفلى</option><option value="45">45 - النعامة</option><option value="46">46 - عين تموشنت</option><option value="47">47 - غرداية</option><option value="48">48 - غليزان</option><option value="49">49 - تيميمون</option><option value="51">51 - أولاد جلال</option><option value="52">52 - بني عباس</option><option value="53">53 - عين صالح</option><option value="55">55 - تقرت</option><option value="56">56 - جانت</option><option value="57">57 - المغير</option><option value="58">58 - المنيعة</option>
-                </select>
-                <span class="sel-arrow">▾</span>
-              </div>
-            </div>
-            <div class="ck-input-row">
-              <label>البلدية</label>
-              <div class="sel-wrap">
-                <select id="ckCommune"><option value="">اختر</option></select>
-                <span class="sel-arrow">▾</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- ملخص -->
-          <div class="ck-summary">
-            <div class="sum-prod">📦 المنتج</div>
-            <div class="sum-prod-name">جهاز IPL لإزالة الشعر — 1,000,000 ومضة + نظارة حماية</div>
-            <div class="sum-row"><span>💰 السعر:</span><span class="val">12,000 دج</span></div>
-            <div class="sum-row"><span>🚚 التوصيل:</span><span style="color:var(--green);font-weight:700">مجانا 🎁</span></div>
-            <hr class="sum-divider">
-            <div class="sum-total"><span>💵 الإجمالي:</span><span class="tv">12,000 دج</span></div>
-          </div>
-
-          <div class="ck-cod">✅ الدفع عند الاستلام — بدون دفع مسبق</div>
-
-          <button id="ckSubmitBtn" onclick="ckSubmit()">تأكيد الطلب 🛒</button>
-
-        </div><!-- /ck-body -->
-      </div><!-- /checkout-box -->
-    </div><!-- /hero-right -->
-
-  </div><!-- /hero-inner -->
+  <div class="trust-row">
+    <span class="tr"><span class="tr-dot"></span>مليون ومضة</span>
+    <span class="tr"><span class="tr-dot"></span>ضمان سنة</span>
+    <span class="tr"><span class="tr-dot"></span>5 مستويات</span>
+    <span class="tr"><span class="tr-dot"></span>نظارة مجانية</span>
+  </div>
 </section>
 
-<!-- ══ WHY IPL ══ -->
-<section class="section dark">
+<!-- BEFORE/AFTER -->
+<section class="sec dk">
   <div class="sec-center">
-    <span class="sec-label">علاش IPL؟</span>
+    <span class="sec-tag gn">النتائج الحقيقية</span>
+    <h2 class="sec-title">قبل وبعد — نتائج زبوناتنا</h2>
+    <p class="sec-sub">عميلاتنا شاركن نتائجهن الحقيقية بعد استعمال الجهاز</p>
+  </div>
+  <div class="ba-grid">
+    <!-- card 1 -->
+    <div class="ba-card" style="background:#111">
+      <div style="display:grid;grid-template-columns:1fr 1fr;height:200px">
+        <div style="background:linear-gradient(135deg,#ede7d8,#e5dece);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">👩</div>
+          <div style="font-size:11px;color:#888;text-align:center">قبل الاستعمال</div>
+          <div style="font-size:10px;color:#999;text-align:center">شعر كثيف</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#d8eedd,#c5e5d0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">✨</div>
+          <div style="font-size:11px;color:#2aaa5c;text-align:center">بعد 8 أسابيع</div>
+          <div style="font-size:10px;color:#2aaa5c;text-align:center">بشرة ناعمة</div>
+        </div>
+      </div>
+      <div style="padding:10px;text-align:center">
+        <span class="ba-result">نقصت 95% من الشعر</span>
+        <div style="font-size:11px;color:#888;margin-top:6px">أمال — الجلفة</div>
+      </div>
+    </div>
+    <!-- card 2 -->
+    <div class="ba-card" style="background:#111">
+      <div style="display:grid;grid-template-columns:1fr 1fr;height:200px">
+        <div style="background:linear-gradient(135deg,#ede7d8,#e5dece);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">😣</div>
+          <div style="font-size:11px;color:#888;text-align:center">قبل</div>
+          <div style="font-size:10px;color:#999;text-align:center">كنت نروح صالون</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#d8eedd,#c5e5d0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">😍</div>
+          <div style="font-size:11px;color:#2aaa5c;text-align:center">بعد 6 أسابيع</div>
+          <div style="font-size:10px;color:#2aaa5c;text-align:center">بدون صالون</div>
+        </div>
+      </div>
+      <div style="padding:10px;text-align:center">
+        <span class="ba-result">وفرت 50,000 دج/سنة</span>
+        <div style="font-size:11px;color:#888;margin-top:6px">مارية — سطيف</div>
+      </div>
+    </div>
+    <!-- card 3 -->
+    <div class="ba-card" style="background:#111">
+      <div style="display:grid;grid-template-columns:1fr 1fr;height:200px">
+        <div style="background:linear-gradient(135deg,#ede7d8,#e5dece);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">😟</div>
+          <div style="font-size:11px;color:#888;text-align:center">قبل</div>
+          <div style="font-size:10px;color:#999;text-align:center">شعر مزعج</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#d8eedd,#c5e5d0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">🎉</div>
+          <div style="font-size:11px;color:#2aaa5c;text-align:center">بعد 8 أسابيع</div>
+          <div style="font-size:10px;color:#2aaa5c;text-align:center">نتائج دائمة</div>
+        </div>
+      </div>
+      <div style="padding:10px;text-align:center">
+        <span class="ba-result">نتائج دائمة 100%</span>
+        <div style="font-size:11px;color:#888;margin-top:6px">شيماء — الجزائر العاصمة</div>
+      </div>
+    </div>
+    <!-- card 4 -->
+    <div class="ba-card" style="background:#111">
+      <div style="display:grid;grid-template-columns:1fr 1fr;height:200px">
+        <div style="background:linear-gradient(135deg,#ede7d8,#e5dece);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">💸</div>
+          <div style="font-size:11px;color:#888;text-align:center">قبل</div>
+          <div style="font-size:10px;color:#999;text-align:center">4000 دج/شهر</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#d8eedd,#c5e5d0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px">
+          <div style="font-size:36px">💚</div>
+          <div style="font-size:11px;color:#2aaa5c;text-align:center">بعد</div>
+          <div style="font-size:10px;color:#2aaa5c;text-align:center">0 دج/شهر</div>
+        </div>
+      </div>
+      <div style="padding:10px;text-align:center">
+        <span class="ba-result">راحة دائمة من البيت</span>
+        <div style="font-size:11px;color:#888;margin-top:6px">نور — وهران</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS STATS -->
+<section class="sec dkr">
+  <div class="sec-center">
+    <span class="sec-tag og">فعالية مثبتة</span>
+    <h2 class="sec-title" style="color:#fff">95% فعالية</h2>
+    <p class="sec-sub">نتائج موثقة أسبوع بأسبوع</p>
+  </div>
+  <div class="res-grid">
+    <div class="res-card"><div class="res-wk">أسبوع 1</div><div class="res-n">30%</div><div class="res-bar"><div class="res-fill" style="width:30%"></div></div><div class="res-d">تقليل واضح</div></div>
+    <div class="res-card"><div class="res-wk">أسبوع 4</div><div class="res-n">65%</div><div class="res-bar"><div class="res-fill" style="width:65%"></div></div><div class="res-d">إزالة شبه كاملة</div></div>
+    <div class="res-card"><div class="res-wk">أسبوع 8</div><div class="res-n">95%</div><div class="res-bar"><div class="res-fill" style="width:95%"></div></div><div class="res-d">نتائج دائمة</div></div>
+  </div>
+</section>
+
+<!-- OFFER / CHECKOUT -->
+<section class="sec dk" id="offer">
+  <div class="sec-center" style="margin-bottom:28px">
+    <span class="sec-tag gn">اطلبي الآن</span>
+    <h2 class="sec-title" style="color:#fff">عرض خاص — كمية محدودة</h2>
+    <p class="sec-sub">عرض شامل بسعر استثنائي مع التوصيل المجاني</p>
+  </div>
+
+  <div class="offer-box">
+    <div class="offer-head">
+      <h2>جهاز IPL الأصلي — العرض الشامل</h2>
+      <p>كل شيء في علبة واحدة — وفري على الصالون للأبد</p>
+    </div>
+
+    <div class="offer-body">
+      <!-- Package -->
+      <div class="pkg">
+        <h3>جهاز IPL الأصلي — كامل</h3>
+        <div class="pkg-desc">
+          جهاز IPL بـ 1,000,000 ومضة + نظارة حماية مجانية + دليل الاستخدام.<br>
+          نتائج دائمة من البيت بدون ألم — كيفاش تعملي جلسة ليزر كاملة في 10 دقائق!
+        </div>
+        <div class="pkg-price-row">
+          <span class="pkg-old">14,500 دج</span>
+          <span class="pkg-new">12,000 <small>دج</small></span>
+        </div>
+        <div class="pkg-badges">
+          <span class="badge">🎁 نظارة حماية مجانية</span>
+          <span class="badge">🚚 توصيل مجاني</span>
+          <span class="badge">🛡️ ضمان سنة</span>
+          <span class="badge og">وفري 17%</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="ck-sec-title"><span class="nm">1</span> معلوماتك</div>
+      <div class="inp"><label>الاسم الكامل</label><input type="text" id="ckName" placeholder="مثال: فاطمة بن علي"></div>
+      <div class="inp"><label>رقم الهاتف</label><input type="tel" id="ckPhone" inputmode="numeric" maxlength="10" placeholder="05XXXXXXXX"></div>
+
+      <div class="ck-sec-title" style="margin-top:14px"><span class="nm">2</span> طريقة التوصيل</div>
+      <div class="del-grid">
+        <div id="ckHomeBox" class="del-card ah" onclick="ckSel('home')">
+          <div class="del-chk"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <svg class="del-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#fff6ee" stroke="#e07b1a" stroke-width="5"/>
+            <polyline points="35,85 100,30 165,85" fill="none" stroke="#e07b1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="55" y="85" width="90" height="63" rx="3" fill="none" stroke="#e07b1a" stroke-width="5"/>
+            <rect x="84" y="112" width="32" height="36" rx="3" fill="#e07b1a"/>
+            <ellipse cx="65" cy="170" rx="16" ry="16" fill="none" stroke="#1e3a5f" stroke-width="5"/>
+            <ellipse cx="140" cy="170" rx="16" ry="16" fill="none" stroke="#1e3a5f" stroke-width="5"/>
+            <path d="M81,170 L92,148 L128,148 L140,162" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="108" y="134" width="24" height="20" rx="3" fill="#e07b1a"/>
+          </svg>
+          <div class="del-title">للمنزل</div>
+          <div class="del-price">مجانا 🎁</div>
+        </div>
+        <div id="ckOfficeBox" class="del-card" onclick="ckSel('office')">
+          <div class="del-chk"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <svg class="del-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#f0f4f9" stroke="#1e3a5f" stroke-width="5"/>
+            <rect x="48" y="38" width="104" height="110" rx="4" fill="none" stroke="#1e3a5f" stroke-width="5"/>
+            <rect x="62" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="90" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="118" y="52" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="62" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="90" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="118" y="76" width="20" height="16" rx="2" fill="#1e3a5f" opacity="0.5"/>
+            <rect x="86" y="112" width="28" height="36" rx="2" fill="#1e3a5f" opacity="0.7"/>
+            <ellipse cx="60" cy="172" rx="15" ry="15" fill="none" stroke="#1e3a5f" stroke-width="5"/>
+            <ellipse cx="138" cy="172" rx="15" ry="15" fill="none" stroke="#1e3a5f" stroke-width="5"/>
+            <path d="M75,172 L86,150 L122,150 L138,164" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="del-title">للمكتب</div>
+          <div class="del-price">مجانا 🎁</div>
+        </div>
+      </div>
+
+      <div class="ck-sec-title"><span class="nm">3</span> العنوان</div>
+      <div class="row2" style="margin-bottom:12px">
+        <div class="inp"><label>الولاية</label><div class="sel-w"><select id="ckWilaya"><option value="">اختر</option><option value="1">01 - أدرار</option><option value="2">02 - الشلف</option><option value="3">03 - الأغواط</option><option value="4">04 - أم البواقي</option><option value="5">05 - باتنة</option><option value="6">06 - بجاية</option><option value="7">07 - بسكرة</option><option value="8">08 - بشار</option><option value="9">09 - البليدة</option><option value="10">10 - البويرة</option><option value="11">11 - تمنراست</option><option value="12">12 - تبسة</option><option value="13">13 - تلمسان</option><option value="14">14 - تيارت</option><option value="15">15 - تيزي وزو</option><option value="16">16 - الجزائر</option><option value="17">17 - الجلفة</option><option value="18">18 - جيجل</option><option value="19">19 - سطيف</option><option value="20">20 - سعيدة</option><option value="21">21 - سكيكدة</option><option value="22">22 - سيدي بلعباس</option><option value="23">23 - عنابة</option><option value="24">24 - قالمة</option><option value="25">25 - قسنطينة</option><option value="26">26 - المدية</option><option value="27">27 - مستغانم</option><option value="28">28 - المسيلة</option><option value="29">29 - معسكر</option><option value="30">30 - ورقلة</option><option value="31">31 - وهران</option><option value="32">32 - البيض</option><option value="33">33 - إليزي</option><option value="34">34 - برج بوعريريج</option><option value="35">35 - بومرداس</option><option value="36">36 - الطارف</option><option value="37">37 - تندوف</option><option value="38">38 - تيسمسيلت</option><option value="39">39 - الوادي</option><option value="40">40 - خنشلة</option><option value="41">41 - سوق أهراس</option><option value="42">42 - تيبازة</option><option value="43">43 - ميلة</option><option value="44">44 - عين الدفلى</option><option value="45">45 - النعامة</option><option value="46">46 - عين تموشنت</option><option value="47">47 - غرداية</option><option value="48">48 - غليزان</option><option value="49">49 - تيميمون</option><option value="51">51 - أولاد جلال</option><option value="52">52 - بني عباس</option><option value="53">53 - عين صالح</option><option value="55">55 - تقرت</option><option value="56">56 - جانت</option><option value="57">57 - المغير</option><option value="58">58 - المنيعة</option></select><span class="sel-ar">▾</span></div></div>
+        <div class="inp"><label>البلدية</label><div class="sel-w"><select id="ckCommune"><option value="">اختر</option></select><span class="sel-ar">▾</span></div></div>
+      </div>
+
+      <div class="ck-sum">
+        <div class="sum-prod">📦 المنتج</div>
+        <div class="sum-pname">جهاز IPL الأصلي — 1,000,000 ومضة + نظارة حماية مجانية</div>
+        <div class="sum-row"><span>💰 السعر:</span><span class="v">12,000 دج</span></div>
+        <div class="sum-row"><span>🚚 التوصيل:</span><span style="color:#1a7a3c;font-weight:700">مجانا 🎁</span></div>
+        <hr class="sum-div">
+        <div class="sum-tot"><span>💵 الإجمالي:</span><span class="tv">12,000 دج</span></div>
+      </div>
+      <div class="ck-cod">✅ الدفع عند الاستلام — بدون دفع مسبق</div>
+      <button id="ckSubmitBtn" onclick="ckSubmit()">تأكيد الطلب 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec dkr">
+  <div class="sec-center">
+    <span class="sec-tag og">لماذا IPL؟</span>
     <h2 class="sec-title">بكري تخسري دراهم في الصالون</h2>
-    <p class="sec-sub">جهاز IPL واحد = سنوات من الراحة بدون ما تحتاجي لحد</p>
+    <p class="sec-sub">جهاز IPL واحد = سنوات راحة بدون ما تحتاجي لحد</p>
   </div>
   <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon">⚡</div>
-      <h3>تقنية IPL الأصلية</h3>
-      <p>الضوء النبضي يستهدف بصيلة الشعر مباشرة ويوقف نموه نهائياً بدون ألم</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">💰</div>
-      <h3>وفري ملايين</h3>
-      <p>حصة واحدة في الصالون = 3000-5000 دج. الجهاز هذا يكفيك للأبد</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🔆</div>
-      <h3>مليون ومضة</h3>
-      <p>طاقة هائلة تكفي لأكثر من 10 سنوات من الاستخدام المنتظم</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🛡️</div>
-      <h3>ضمان سنة</h3>
-      <p>ضامنينلك الجهاز 12 شهر كامل من تاريخ الاستلام — بدون قيود</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🥽</div>
-      <h3>نظارة مجانية</h3>
-      <p>مرفقة مع كل جهاز لحماية عيناك — استخدام آمن في البيت</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">💎</div>
-      <h3>5 مستويات طاقة</h3>
-      <p>اضبطي الشدة حسب بشرتك — يناسب كل أنواع البشرة الجزائرية</p>
-    </div>
+    <div class="why-card"><div class="why-icon">⚡</div><h3>تقنية IPL الأصلية</h3><p>الضوء النبضي يستهدف بصيلة الشعر ويوقف نموه نهائياً بدون ألم</p></div>
+    <div class="why-card"><div class="why-icon">💰</div><h3>وفري ملايين</h3><p>حصة واحدة في الصالون = 3000-5000 دج. الجهاز يكفيك للأبد</p></div>
+    <div class="why-card"><div class="why-icon">🔆</div><h3>مليون ومضة</h3><p>طاقة هائلة تكفي أكثر من 10 سنوات من الاستخدام المنتظم</p></div>
+    <div class="why-card"><div class="why-icon">🛡️</div><h3>ضمان سنة كاملة</h3><p>نضمنلك الجهاز 12 شهر من تاريخ الاستلام — بدون قيود</p></div>
+    <div class="why-card"><div class="why-icon">🥽</div><h3>نظارة مجانية</h3><p>مرفقة مع كل جهاز لحماية عيناك — استخدام آمن في البيت</p></div>
+    <div class="why-card"><div class="why-icon">💎</div><h3>5 مستويات طاقة</h3><p>اضبطي الشدة حسب بشرتك — يناسب كل أنواع البشرة الجزائرية</p></div>
   </div>
 </section>
 
-<!-- ══ COMPARE ══ -->
-<section class="section darker">
+<!-- COMPARE -->
+<section class="sec dk">
   <div class="sec-center">
-    <span class="sec-label">مقارنة</span>
+    <span class="sec-tag gn">مقارنة</span>
     <h2 class="sec-title">IPL vs الصالون vs الشمع</h2>
     <p class="sec-sub">قارني بالأرقام وحكمي بنفسك</p>
   </div>
-  <div class="compare-wrap">
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th style="text-align:right">المقارنة</th>
-          <th class="highlight">جهاز IPL</th>
-          <th style="color:var(--txt2)">صالون ليزر</th>
-          <th style="color:var(--txt2)">شمع / حلاوة</th>
-        </tr>
-      </thead>
+  <div class="cmp-wrap">
+    <table class="cmp-tbl">
+      <thead><tr><th style="text-align:right">المقارنة</th><th class="hl">جهاز IPL</th><th style="color:var(--t2)">صالون ليزر</th><th style="color:var(--t2)">شمع</th></tr></thead>
       <tbody>
-        <tr><td>التكلفة الإجمالية</td><td class="highlight">12,000 دج مرة وحدة</td><td>+200,000 دج/سنة</td><td>+60,000 دج/سنة</td></tr>
-        <tr><td>النتائج دائمة</td><td class="highlight"><span class="check-y">✓</span></td><td><span class="check-y">✓</span></td><td><span class="check-n">✗</span></td></tr>
-        <tr><td>في البيت</td><td class="highlight"><span class="check-y">✓</span></td><td><span class="check-n">✗</span></td><td><span class="check-y">✓</span></td></tr>
-        <tr><td>بدون ألم</td><td class="highlight"><span class="check-y">✓</span></td><td><span class="check-n">✗</span></td><td><span class="check-n">✗</span></td></tr>
-        <tr><td>وقت الجلسة</td><td class="highlight">10 دقائق</td><td>+ساعة تنقل</td><td>30 دقيقة</td></tr>
-        <tr><td>نتيجة واضحة من</td><td class="highlight">الأسبوع الأول</td><td>الشهر الأول</td><td>تنبت من جديد</td></tr>
+        <tr><td>التكلفة</td><td class="hl">12,000 دج — مرة وحدة</td><td>+200,000 دج/سنة</td><td>+60,000 دج/سنة</td></tr>
+        <tr><td>نتائج دائمة</td><td class="hl"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cn">✗</span></td></tr>
+        <tr><td>في البيت</td><td class="hl"><span class="cy">✓</span></td><td><span class="cn">✗</span></td><td><span class="cy">✓</span></td></tr>
+        <tr><td>بدون ألم</td><td class="hl"><span class="cy">✓</span></td><td><span class="cn">✗</span></td><td><span class="cn">✗</span></td></tr>
+        <tr><td>وقت الجلسة</td><td class="hl">10 دقائق</td><td>+ساعة تنقل</td><td>30 دقيقة</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- ══ HOW TO USE ══ -->
-<section class="section dark">
+<!-- REVIEWS -->
+<section class="sec" style="background:#f7f5f0">
   <div class="sec-center">
-    <span class="sec-label">طريقة الاستخدام</span>
-    <h2 class="sec-title">3 خطوات بسيطة</h2>
-    <p class="sec-sub">ما تحتاجيش خبرة — الجهاز مصمم للاستخدام في البيت</p>
-  </div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-num">١</div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <h3>حضّري البشرة</h3>
-        <p>حلقي المنطقة المراد إزالة شعرها يوم قبل الاستخدام، ونظفي البشرة جيداً. ما تستعمليش كريمات أو زيوت قبل الجلسة.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-num">٢</div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <h3>استعملي الجهاز</h3>
-        <p>لبسي النظارة المرفقة، اختاري المستوى المناسب لبشرتك (ابدأي بـ 1 أو 2)، وضعي رأس الجهاز على البشرة واضغطي الزر.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-num">٣</div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <h3>كرري أسبوعياً</h3>
-        <p>كرري الجلسة كل أسبوع لمدة 8 أسابيع. من الأسبوع الأول راح تلاحظي فرق. بعد الشهرين نتائج شبه دائمة.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ RESULTS ══ -->
-<section class="section darker">
-  <div class="sec-center">
-    <span class="sec-label">النتائج</span>
-    <h2 class="sec-title">نتائج موثقة أسبوع بأسبوع</h2>
-    <p class="sec-sub">عميلاتنا شهدن على النتائج</p>
-  </div>
-  <div class="results-grid">
-    <div class="res-card">
-      <div class="res-week">أسبوع 1</div>
-      <div class="res-pct">30%</div>
-      <div class="res-bar"><div class="res-fill" style="width:30%"></div></div>
-      <div class="res-desc">تقليل واضح</div>
-    </div>
-    <div class="res-card">
-      <div class="res-week">أسبوع 4</div>
-      <div class="res-pct">65%</div>
-      <div class="res-bar"><div class="res-fill" style="width:65%"></div></div>
-      <div class="res-desc">إزالة شبه كاملة</div>
-    </div>
-    <div class="res-card">
-      <div class="res-week">أسبوع 8</div>
-      <div class="res-pct">95%</div>
-      <div class="res-bar"><div class="res-fill" style="width:95%"></div></div>
-      <div class="res-desc">نتائج دائمة</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ REVIEWS ══ -->
-<section class="section dark">
-  <div class="sec-center">
-    <span class="sec-label">آراء الزبونات</span>
-    <h2 class="sec-title">هكا قالو عميلاتنا</h2>
-    <p class="sec-sub">آراء حقيقية من زبونات جزائريات</p>
+    <span class="sec-tag gn" style="background:rgba(26,122,60,.1);border:1px solid rgba(26,122,60,.25)">آراء الزبونات</span>
+    <h2 class="sec-title" style="color:#111">هكا قالو عميلاتنا</h2>
+    <p class="sec-sub" style="color:#666">آراء حقيقية من زبونات جزائريات</p>
   </div>
   <div class="rev-grid">
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">أم</div><div><div class="rev-name">أمال بن ساسي</div><div class="rev-loc">الجلفة</div></div></div>
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"والله غير روعة! في البداية كنت خايفة، بصح بعد 3 استعمالات لاحظت فرق كبير. الشعرة ولات رقيقة ومابقاتش تنوض. ننصح بيه!"</p>
-      <div class="rev-name">أمال بن ساسي — الجلفة ⭐</div>
+      <p class="rev-txt">"والله غير روعة! في البداية كنت خايفة، بصح بعد 3 استعمالات لاحظت فرق كبير. الشعرة ولات رقيقة ومابقاتش تنوض. ننصح بيه!"</p>
+      <div class="rev-likes">👍 21 شخص وجد هذا مفيداً</div>
     </div>
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">مر</div><div><div class="rev-name">مارية حداد</div><div class="rev-loc">سطيف</div></div></div>
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"كنت نخسر 4000 دج كل شهر في الصالون. اليوم بـ 12 ألف مرة وحدة وخلاص! الجهاز أصلي و BHK جدية في التعامل."</p>
-      <div class="rev-name">مارية حداد — سطيف ⭐</div>
+      <p class="rev-txt">"كنت نخسر 4000 دج كل شهر في الصالون. اليوم بـ 12 ألف مرة وحدة وخلاص! الجهاز أصلي و BHK جدية في التعامل."</p>
+      <div class="rev-likes">👍 13 شخص وجد هذا مفيداً</div>
     </div>
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">شي</div><div><div class="rev-name">شيماء مقدم</div><div class="rev-loc">الجزائر العاصمة</div></div></div>
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"صح سعر باطل بالمقارنة مع الليزر! حصة وحدة في العيادة = 8000 دج، وما كملتش. بالجهاز هذا في بيتي نخدم وقت ما نحب."</p>
-      <div class="rev-name">شيماء مقدم — الجزائر العاصمة ⭐</div>
+      <p class="rev-txt">"صح سعر باطل بالمقارنة مع الليزر! حصة وحدة في العيادة = 8000 دج. بالجهاز هذا في بيتي نخدم وقت ما نحب."</p>
+      <div class="rev-likes">👍 23 شخص وجد هذا مفيداً</div>
     </div>
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">نو</div><div><div class="rev-name">نور الهدى</div><div class="rev-loc">وهران</div></div></div>
       <div class="rev-stars">★★★★</div>
-      <p class="rev-text">"التوصيل جاء في 48 ساعة، التغليف محكم، والجهاز في كيس أنيق. بدأت أستعمله وراضية عليه. شكراً BHK!"</p>
-      <div class="rev-name">نور الهدى — وهران ⭐</div>
+      <p class="rev-txt">"التوصيل جاء في 48 ساعة، التغليف محكم، والجهاز في كيس أنيق. بدأت أستعمله وراضية عليه. شكراً BHK!"</p>
+      <div class="rev-likes">👍 11 شخص وجد هذا مفيداً</div>
     </div>
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">سا</div><div><div class="rev-name">سارة بوعلام</div><div class="rev-loc">قسنطينة</div></div></div>
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"صديقتي هي اللي نصحتني. جربته وأنا في غاية الرضا. النتائج من الأسبوع الثاني وما كانش ألم خالص."</p>
-      <div class="rev-name">سارة بوعلام — قسنطينة ⭐</div>
+      <p class="rev-txt">"صديقتي هي اللي نصحتني. جربته وأنا في غاية الرضا. النتائج من الأسبوع الثاني وما كانش ألم خالص."</p>
+      <div class="rev-likes">👍 8 أشخاص وجدوا هذا مفيداً</div>
     </div>
     <div class="rev-card">
+      <div class="rev-top"><div class="rev-av">حي</div><div><div class="rev-name">حياة بلقاسم</div><div class="rev-loc">بجاية</div></div></div>
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"جهاز سهل الاستخدام، حتى بنتي كبيرة (19 سنة) تستعمله لوحدها. الضمان خلاني نثق فيه. واصلوا!"</p>
-      <div class="rev-name">حياة بلقاسم — بجاية ⭐</div>
+      <p class="rev-txt">"جهاز سهل الاستخدام، حتى بنتي (19 سنة) تستعمله لوحدها. الضمان خلاني نثق فيه. واصلوا!"</p>
+      <div class="rev-likes">👍 25 شخص وجد هذا مفيداً</div>
     </div>
   </div>
 </section>
 
-<!-- ══ FAQ ══ -->
-<section class="section darker">
+<!-- FAQ -->
+<section class="sec dk">
   <div class="sec-center">
-    <span class="sec-label">أسئلة شائعة</span>
+    <span class="sec-tag og">أسئلة شائعة</span>
     <h2 class="sec-title">عندك سؤال؟</h2>
     <p class="sec-sub">أجوبة على الأسئلة اللي تسألوها الزبونات دايماً</p>
   </div>
   <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        الجهاز آمن لكل أنواع البشرة؟
-        <span class="arrow">▾</span>
-      </div>
-      <div class="faq-a">نعم، يناسب معظم أنواع البشرة الفاتحة والوسطى. يحتوي على 5 مستويات تستطيعي ضبطها حسب بشرتك. البشرة الداكنة جداً (التون 6+) يُنصح بالبدء بمستوى 1.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        متى نلاحظ النتائج؟
-        <span class="arrow">▾</span>
-      </div>
-      <div class="faq-a">من الأسبوع الأول ستلاحظين تباطؤاً في نمو الشعر. بعد 4 أسابيع إزالة شبه كاملة. بعد 8 أسابيع نتائج دائمة في معظم المناطق.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        كيفاش يوصلني التوصيل؟
-        <span class="arrow">▾</span>
-      </div>
-      <div class="faq-a">نوصلو لـ 58 ولاية جزائرية عبر شركات التوصيل المعتمدة. التوصيل للمنزل خلال 24-72 ساعة. للمكتب في نفس اليوم أو الغد في معظم المدن الكبرى.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        إذا ما عجبنيش؟
-        <span class="arrow">▾</span>
-      </div>
-      <div class="faq-a">الجهاز يأتي مع ضمان سنة كاملة. إذا واجهتِ أي مشكلة تقنية نتكفل بالحل. تواصلي معنا عبر واتساب وراح نساعدك فوراً.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        واش الدفع آمن؟
-        <span class="arrow">▾</span>
-      </div>
-      <div class="faq-a">100% آمن! الدفع يكون عند الاستلام فقط — ما تدفعيش قبل ما تشوفي الجهاز بعينيك وتطمني عليه. بدون مخاطرة خالص.</div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">الجهاز آمن لكل أنواع البشرة؟<span class="faq-arr">▾</span></div><div class="faq-a">نعم، يناسب معظم أنواع البشرة. يحتوي على 5 مستويات تستطيعي ضبطها. البشرة الداكنة جداً يُنصح بالبدء بمستوى 1.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">متى نلاحظ النتائج؟<span class="faq-arr">▾</span></div><div class="faq-a">من الأسبوع الأول ستلاحظين تباطؤاً في نمو الشعر. بعد 8 أسابيع نتائج دائمة في معظم المناطق.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">كيفاش يوصلني التوصيل؟<span class="faq-arr">▾</span></div><div class="faq-a">نوصلو لـ 58 ولاية جزائرية. التوصيل للمنزل خلال 24-72 ساعة. للمكتب في نفس اليوم أو الغد في معظم المدن الكبرى.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">واش الدفع آمن؟<span class="faq-arr">▾</span></div><div class="faq-a">100% آمن! الدفع يكون عند الاستلام فقط — ما تدفعيش قبل ما تشوفي الجهاز بعينيك. بدون مخاطرة خالص.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">إذا ما عجبنيش؟<span class="faq-arr">▾</span></div><div class="faq-a">الجهاز يأتي مع ضمان سنة كاملة. إذا واجهتِ أي مشكلة تقنية نتكفل بالحل. تواصلي معنا عبر واتساب وراح نساعدك فوراً.</div></div>
+  </div>
+</section>
+
+<!-- CERT -->
+<section class="sec dkr">
+  <div class="sec-center" style="margin-bottom:28px">
+    <span class="sec-tag og">الجودة والأمان</span>
+    <h2 class="sec-title">مصادق عليه ومضمون</h2>
+  </div>
+  <div class="cert-box">
+    <div class="cert-icon">🏅</div>
+    <div class="cert-body">
+      <h3>جهاز IPL معتمد وآمن للاستخدام المنزلي</h3>
+      <p>تقنية الضوء النبضي المكثف المستخدمة في هذا الجهاز هي نفسها المستخدمة في عيادات التجميل المتخصصة. الجهاز مصمم للاستخدام المنزلي الآمن مع 5 مستويات قابلة للتعديل لضمان الراحة والأمان لكل أنواع البشرة.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ BOTTOM CTA ══ -->
-<section class="section dark">
-  <div class="cta-bottom">
+<!-- CTA BOTTOM -->
+<section class="sec dk">
+  <div class="cta-btm">
     <h2>علاش تستنّي؟ 🔥</h2>
     <p>+5000 زبونة جزائرية خيروا BHK Store. التوصيل مجاني، والدفع عند الاستلام. ما فيهاش خسارة!</p>
-    <button class="cta-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">اطلبي الآن — مجاناً التوصيل</button>
-    <div style="margin-top:16px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
-      <span style="font-size:13px;color:var(--txt3)">✅ دفع عند الاستلام</span>
-      <span style="font-size:13px;color:var(--txt3)">🚚 توصيل مجاني</span>
-      <span style="font-size:13px;color:var(--txt3)">🛡️ ضمان سنة</span>
+    <button class="cta-go" onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'})">اطلبي الآن — مجاناً التوصيل</button>
+    <div style="margin-top:14px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap">
+      <span style="font-size:12px;color:#666">✅ دفع عند الاستلام</span>
+      <span style="font-size:12px;color:#666">🚚 توصيل مجاني</span>
+      <span style="font-size:12px;color:#666">🛡️ ضمان سنة</span>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-trust">
+  <div class="ft-trust">
     <div class="ft"><span class="ft-dot"></span>دفع عند الاستلام</div>
     <div class="ft"><span class="ft-dot"></span>توصيل مجاني 58 ولاية</div>
     <div class="ft"><span class="ft-dot"></span>ضمان سنة كاملة</div>
     <div class="ft"><span class="ft-dot"></span>مليون ومضة</div>
-    <div class="ft"><span class="ft-dot"></span>دعم 7/7</div>
   </div>
   <p>© 2026 BHK Store — جميع الحقوق محفوظة</p>
 </footer>
 
-<!-- ══ SUCCESS MODAL ══ -->
-<div id="ckModal" class="ck-modal">
+<!-- MODAL -->
+<div id="ckModal" class="modal">
   <div class="modal-box">
-    <div class="modal-icon">✅</div>
+    <div class="modal-ico">✅</div>
     <h2 class="modal-title">شكراً على ثقتك! ❤️</h2>
-    <p class="modal-text">تم استلام طلبك بنجاح.<br>سيتواصل معك فريق <strong>BHK STORE</strong> قريباً لتأكيد التوصيل.</p>
-    <button class="modal-btn" onclick="ckCloseModal()">فهمت</button>
+    <p class="modal-txt">تم استلام طلبك بنجاح.<br>سيتواصل معك فريق <strong>BHK STORE</strong> قريباً لتأكيد التوصيل.</p>
+    <button class="modal-btn" onclick="ckClose()">فهمت</button>
   </div>
 </div>
 
 <script>
-const SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycby_UTUdy5TboREqQHsXlkqb02mxZGpbeRkQ5wHG2ymBdcSSAdDNThy7X3mqND7KpKqF7g/exec';
-const WHATSAPP_NUM = '213553096569';
-const RESTRICTED   = ['52','56','57'];
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycby_UTUdy5TboREqQHsXlkqb02mxZGpbeRkQ5wHG2ymBdcSSAdDNThy7X3mqND7KpKqF7g/exec';
+const WHATSAPP='213553096569';
+const RESTRICTED=['52','56','57'];
+const communeData={"1":["Adrar","Akabli","Aoulef","Bouda","Fenoughil","In Zghmir","Ouled Ahmed Timmi","Reggane","Sali","Sebaa","Tamantit","Tamest","Timekten","Tit","Tsabit","Zaouiet Kounta"],"2":["Abou El Hassan","Ain Merane","Benairia","Beni Bouattab","Beni Haoua","Beni Rached","Boukadir","Bouzeghaia","Breira","Chettia","Chlef","Dahra","El Hadjadj","El Karimia","El Marsa","Harchoun","Herenfa","Labiod Medjadja","Moussadek","Oued Fodda","Oude Goussine","Oude Sly","Ouled Abbes","Ouled Ben Abdelkader","Ouled Fares","Oum Drou","Sendjas","Sidi Abderrahmane","Sidi Akkacha","Sobha","Tadjena","Talassa","Taougrite","Tenes","Zeboudja"],"3":["Aflou","Ain Madhi","Ain Sidi Ali","Beidha","Benacer Benchohra","Brida","El Assafia","El Ghicha","El Haouaita","Gueltat Sidi Saad","Hadj Mechri","Hassi Delaa","Hassi R'mel","Kheneg","Ksar El Hirane","Laghouat","Oued M'zi","Oued Morra","Sebgag","Sidi Bouzid","Sidi Makhlouf","Tadjemout","Tadjrouna","Taouiala"],"4":["Ain Babouche","Ain Beida","Ain Diss","Ain Fekroune","Ain Kercha","Ain M'lila","Ain Zitoun","Behir Chergui","Berriche","Bir Chouhada","Dhala","El Amiria","El Belala","El Djazia","El Fedjoudj Boughrara Sa","El Harmilia","Fkirina","Hanchir Toumghani","Ksar Sbahi","Meskiana","Oued Nini","Ouled Gacem","Ouled Hamla","Ouled Zouai","Oum El Bouaghi","Rahia","Sigus","Souk Naamane","Zorg"],"5":["Ain Djasser","Ain Touta","Ain Yagout","Arris","Azil Abedelkader","Barika","Batna","Beni Foudhala El Hakania","Bitam","Boulhilat","Boumagueur","Boumia","Bouzina","Chemora","Chir","Djerma","Djezzar","El Hassi","El Madher","Fesdis","Foum Toub","Ghassira","Gosbat","Guigba","Hidoussa","Ichmoul","Inoughissen","Ksar Bellezma","Larbaa","Lazrou","Lemsane","M Doukal","Maafa","Menaa","Merouana","N Gaous","Oued Chaaba","Oued El Ma","Oued Taga","Ouled Ammar","Ouled Aouf","Ouled Fadel","Ouled Sellem","Ouled Si Slimane","Ouyoun El Assafir","Rahbat","Ras El Aioun","Sefiane","Seggana","Seriana","T Kout","Talkhamt","Taxlent","Tazoult","Teniet El Abed","Tighanimine","Tigharghar","Tilatou","Timgad","Zanet El Beida"],"6":["Adekar","Ait R'zine","Ait Smail","Akbou","Akfadou","Amalou","Amizour","Aokas","Barbacha","Bejaia","Beni Dejllil","Beni K'sila","Beni Mallikeche","Benimaouche","Boudjellil","Bouhamza","Boukhelifa","Chellata","Chemini","Darghina","Dra El Caid","El Kseur","Fenaia Il Maten","Feraoun","Ighil Ali","Ighram","Kendira","Kherrata","Leflaye","M'cisna","Melbou","Oued Ghir","Ouzellaguene","Seddouk","Sidi Aich","Sidi Ayad","Smaoun","Souk El Tenine","Souk Oufella","Tala Hamza","Tamokra","Tamridjet","Taourit Ighil","Taskriout","Tazmalt","Tibane","Tichy","Tifra","Timezrit","Tinebdar","Tizi N'berber","Toudja"],"7":["Ain Naga","Ain Zaatout","Biskra","Bordj Ben Azzouz","Bouchagroun","Branis","Chetma","Djemorah","El Feidh","El Ghrous","El Hadjab","El Haouch","El Kantara","El Outaya","Foughala","Khenguet Sidi Nadji","Lichana","Lioua","M'chouneche","M'lili","Mekhadma","Meziraa","Oumache","Ourlal","Sidi Okba","Tolga","Zeribet El Oued"],"8":["Abadla","Bechar","Beni Ounif","Boukais","Erg Ferradj","Kenadsa","Lahmar","Mechraa H.boumediene","Meridja","Mogheul","Taghit"],"9":["Ain Romana","Beni Mered","Beni Tamou","Benkhelil","Blida","Bouarfa","Boufarik","Bougara","Bouinan","Chebli","Chiffa","Chrea","Djebabra","El Affroun","Guerrouaou","Hammam Melouane","Larbaa","Meftah","Mouzaia","Oued Djer","Oued El Alleug","Ouled Slama","Ouled Yaich","Souhane","Souma"],"10":["Aghbalou","Ahl El Ksar","Ain Bessem","Ain El Hadjar","Ain Laloui","Ain Turk","Ait Laaziz","Aomar","Bechloul","Bir Ghbalou","Bordj Okhriss","Bouderbala","Bouira","Boukram","Chorfa","Dechmia","Dirah","Djebahia","El Adjiba","El Asnam","El Hachimia","El Hakimia","El Khabouzia","El Mokrani","Guerrouma","Hadjera Zerga","Haizer","Hanif","Kadiria","Lakhdaria","M Chedallah","Maala","Mamora","Mezdour","Oued El Berdi","Ouled Rached","Raouraoua","Ridane","Saharidj","Souk El Khemis","Sour El Ghozlane","Taghzout","Taguedite","Taourirt","Z'barbar"],"11":["Abalessa","Ain Amguel","Idles","Tamanrasset","Tazrouk"],"12":["Ain Zerga","Bedjene","Bekkaria","Bir Dheheb","Bir El Ater","Bir Mokkadem","Boukhadra","Boulhaf Dyr","Cheria","El Aouinet","El Houidjbet","El Kouif","El Malabiod","El Meridj","El Mezeraa","El Ogla","El Ogla El Malha","Ferkane","Guorriguer","Hammamet","Morssot","Negrine","Ouenza","Oum Ali","Saf Saf El Ouesra","Stah Guentis","Tebessa","Telidjen"],"13":["Ain Fettah","Ain Fezza","Ain Ghoraba","Ain Kebira","Ain Nehala","Ain Tallout","Ain Youcef","Amieur","Azails","Bab El Assa","Beni Bahdel","Beni Boussaid","Beni Khaled","Beni Mester","Beni Ouarsous","Beni Smiel","Beni Snous","Bensekrane","Bouhlou","Bouihi","Chetouane","Dar Yaghmouracene","Djebala","El Aricha","El Fehoul","El Gor","Fellaoucene","Ghazaouet","Hammam Boughrara","Hennaya","Honaine","Maghnia","Mansourah","Marsa Ben M'hidi","Msirda Fouaga","Nedroma","Oued Chouly","Ouled Mimoun","Ouled Riyah","Remchi","Sabra","Sebbaa Chioukh","Sebdou","Sidi Abdelli","Sidi Djilali","Sidi Medjahed","Souahlia","Souani","Souk Tleta","Terny Beni Hediel","Tianet","Tlemcen","Zenata"],"14":["Ain Bouchekif","Ain Deheb","Ain El Hadid","Ain Kermes","Ain Zarit","Bougara","Chehaima","Dahmouni","Djebilet Rosfa","Djillali Ben Amar","Faidja","Frenda","Guertoufa","Hamadia","Ksar Chellala","Madna","Mahdia","Mechraa Safa","Medrissa","Medroussa","Meghila","Mellakou","Nadorah","Naima","Oued Lilli","Rahouia","Rechaiga","Sebaine","Sebt","Serghine","Si Abdelghani","Sidi Abderrahmane","Sidi Ali Mellal","Sidi Bakhti","Sidi Hosni","Sougueur","Tagdemt","Takhemaret","Tiaret","Tidda","Tousnina","Zmalet El Emir Abdelkade"],"15":["Abi Youcef","Aghribs","Agouni Gueghrane","Ain El Hammam","Ain Zaouia","Ait Aggouacha","Ait Bouaddou","Ait Boumehdi","Ait Chafaa","Ait Khellili","Ait Mahmoud","Ait Oumalou","Ait Toudert","Ait Yahia","Ait Yahia Moussa","Akbil","Akerrou","Assi Youcef","Azazga","Azeffoun","Beni Aissi","Beni Douala","Beni Yenni","Beni Zikki","Beni Zmenzer","Boghni","Boudjima","Bounouh","Bouzeguene","Djebel Aissa Mimoun","Draa Ben Khedda","Draa El Mizan","Freha","Frikat","Iboudrarene","Idjeur","Iferhounene","Ifigha","Iflissen","Illilten","Illoula Oumalou","Imsouhal","Irdjen","Larba Nath Irathen","Larbaa Nath Irathen","M'kira","Maatkas","Makouda","Mechtras","Mekla","Mizrana","Ouacif","Ouadhias","Ouaguenoune","Sidi Naamane","Souamaa","Souk El Thenine","Tadmait","Tigzirt","Timizart","Tirmitine","Tizi Ghenif","Tizi N'tleta","Tizi Ouzou","Tizi Rached","Yakourene","Yatafene","Zekri"],"16":["Ain Benian","Ain Taya","Alger Centre","Bab El Oued","Bab Ezzouar","Baba Hesen","Bachedjerah","Bains Romains","Baraki","Ben Aknoun","Beni Messous","Bir Mourad Rais","Bir Touta","Birkhadem","Boloqhine Ibnou Ziri","Bordj El Bahri","Bordj El Kiffan","Bourouba","Bouzareah","Casbah","Cheraga","Dar El Beida","Dely Ibrahim","Djasr Kasentina","Douira","Draria","El Achour","El Biar","El Harrach","El Madania","El Magharia","El Merssa","El Mouradia","Herraoua","Hussein Dey","Hydra","Kheraisia","Kouba","Les Eucalyptus","Maalma","Mohamed Belouzdad","Mohammadia","Oued Koriche","Oued Smar","Ouled Chebel","Ouled Fayet","Rahmania","Rais Hamidou","Reghaia","Rouiba","Sehaoula","Setaouali","Sidi M'hamed","Sidi Moussa","Souidania","Tessala El Merdja","Zeralda"],"17":["Ain Chouhada","Ain El Ibel","Ain Fekka","Ain Maabed","Ain Oussera","Amourah","Benhar","Benyagoub","Birine","Bouira Lahdab","Charef","Dar Chioukh","Deldoul","Djelfa","Douis","El Guedid","El Idrissia","El Khemis","Faidh El Botma","Guernini","Had Sahary","Hassi Bahbah","Hassi El Euch","Hassi Fedoul","M Liliha","Messaad","Moudjebara","Sed Rahal","Selmana","Sidi Baizid","Sidi Ladjel","Tadmit","Zaafrane","Zaccar"],"18":["Bordj Tahar","Boudria Beniyadjis","Bouraoui Belhadef","Boussif Ouled Askeur","Chahna","Chekfa","Djemaa Beni Habibi","Djimla","El Ancer","El Aouana","El Kennar Nouchfi","El Milia","Emir Abdelkader","Erraguene","Ghebala","Jijel","Khiri Oued Adjoul","Kouas","Oudjana","Ouled Rabah","Ouled Yahia Khadrouch","Selma Benziada","Settara","Sidi Abdelaziz","Sidi Marouf","Taher","Texena","Ziama Mansouria"],"19":["Ain Abessa","Ain Arnat","Ain Azel","Ain El Kebira","Ain Lahdjar","Ain Legradj","Ain Oulmane","Ain Roua","Ain Sebt","Ait Naoual Mezada","Ait Tizi","Amoucha","Babor","Bazer Sakra","Beidha Bordj","Bellaa","Beni Aziz","Beni Chebana","Beni Fouda","Beni Mouhli","Beni Ouartilane","Beni Oussine","Bir El Arch","Bir Haddada","Bouandas","Bougaa","Bousselam","Boutaleb","Dehamcha","Djemila","Draa Kebila","El Eulma","El Ouldja","El Ouricia","Guellal","Guelta Zerka","Guenzet","Guidjel","Hamam Soukhna","Hamma","Hammam Guergour","Harbil","Ksar El Abtal","Maaouia","Maouaklane","Mezloug","Oued El Barad","Ouled Addouane","Ouled Sabor","Ouled Si Ahmed","Ouled Tebben","Rosfa","Salah Bey","Serdj El Ghoul","Setif","Tachouda","Tala Ifacene","Taya","Tella","Tizi N'bechar"],"20":["Ain El Hadjar","Ain Sekhouna","Ain Soltane","Doui Thabet","El Hassasna","Hounet","Maamora","Moulay Larbi","Ouled Brahim","Ouled Khaled","Saida","Sidi Ahmed","Sidi Amar","Sidi Boubekeur","Tircine","Youb"],"21":["Ain Bouziane","Ain Charchar","Ain Kechera","Ain Zouit","Azzaba","Bekkouche Lakhdar","Ben Azzouz","Beni Bechir","Beni Oulbane","Beni Zid","Bin El Ouiden","Bouchetata","Cheraia","Collo","Djendel Saadi Mohamed","El Arrouch","El Ghedir","El Hadaiek","El Marsa","Emjez Edchich","Es Sebt","Filfila","Hamadi Krouma","Kanoua","Kerkera","Khenag Mayoum","Oued Zhour","Ouldja Boulbalout","Ouled Attia","Ouled Habbeba","Oum Toub","Ramdane Djamel","Salah Bouchaour","Sidi Mezghiche","Skikda","Tamalous","Zerdezas","Zitouna"],"22":["Ain Adden","Ain El Berd","Ain Kada","Ain Thrid","Ain Tindamine","Amarnas","Badredine El Mokrani","Belarbi","Ben Badis","Benachiba Chelia","Bir El Hammam","Boudjebaa El Bordj","Boukhanafis","Chetouane Belaila","Dhaya","El Hacaiba","Hassi Dahou","Hassi Zahana","Lamtar","M'cid","Makedra","Marhoum","Merine","Mezaourou","Mostefa Ben Brahim","Moulay Slissen","Oued Sebaa","Oued Sefioun","Oued Taourira","Ras El Ma","Redjem Demouche","Sehala Thaoura","Sfissef","Sidi Ali Benyoub","Sidi Ali Boussidi","Sidi Bel Abbes","Sidi Brahim","Sidi Chaib","Sidi Dahou Zairs","Sidi Hamadouche","Sidi Khaled","Sidi Lahcene","Sidi Yacoub","Tabia","Tafissour","Taoudmout","Teghalimet","Telagh","Tessala","Tilmouni","Zerouala"],"23":["Ain Berda","Annaba","Berrahel","Chetaibi","Cheurfa","El Bouni","El Hadjar","Eulma","Oued El Aneb","Seraidi","Sidi Amar","Treat"],"24":["Ain Ben Beida","Ain Hessania","Ain Larbi","Ain Makhlouf","Ain Reggada","Belkheir","Ben Djarah","Beni Mezline","Bordj Sabat","Bou Hachana","Bou Hamdane","Bouati Mahmoud","Bouchegouf","Bouhamra Ahmed","Dahouara","Djeballah Khemissi","El Fedjoudj","Guelaat Bou Sbaa","Guelma","Hamam Debagh","Hammam N'bail","Heliopolis","Khezara","Medjez Amar","Medjez Sfa","Nechmaya","Oued Cheham","Oued Fragha","Oued Zenati","Ras El Agba","Roknia","Sellaoua Announa","Sidi Sandel","Tamlouka"],"25":["Ain Abid","Ain Smara","Ben Badis","Beni Hamidene","Constantine","Didouche Mourad","El Khroub","Hamma Bouziane","Ibn Ziad","Messaoud Boujeriou","Ouled Rahmouni","Zighoud Youcef"],"26":["Ain Boucif","Ain Ouksir","Aissaouia","Aziz","Baata","Ben Chicao","Beni Slimane","Berrouaghia","Bir Ben Laabed","Boghar","Bouaiche","Bouaichoune","Bouchrahil","Boughzoul","Bouskene","Chabounia","Chelalet El Adhaoura","Cheniguel","Damiat","Derrag","Deux Bassins","Djouab","Draa Essamar","El Azizia","El Guelbelkebir","El Hamdania","El Omaria","El Ouinet","Hannacha","Kef Lakhdar","Khams Djouamaa","Ksar El Boukhari","Maghraoua","Medea","Medjebar","Meftaha","Mezerana","Mihoub","Ouamri","Oued Harbil","Ouled Antar","Ouled Bouachra","Ouled Brahim","Ouled Deid","Ouled Hellal","Ouled Maaref","Oum El Djellil","Ouzera","Rebaia","Saneg","Sedraya","Seghouane","Si Mahdjoub","Sidi Demed","Sidi Naamane","Sidi Rabie","Sidi Zahar","Sidi Ziane","Souagui","Tablat","Tafraout","Tamesguida","Tletat Ed Douair","Zoubiria"],"27":["Achaacha","Ain Boudinar","Ain Nouissy","Ain Sidi Cherif","Ain Tedles","Benabdelmalek Ramdane","Bouguirat","Fornaka","Hadjadj","Hassi Mameche","Hassiane","Khadra","Kheir Eddine","Mansourah","Mazagran","Mesra","Mostaganem","Nekmaria","Oued El Kheir","Ouled Boughalem","Ouled Maalah","Safsaf","Sayada","Sidi Ali","Sidi Belaattar","Sidi Lakhdar","Sirat","Souaflia","Sour","Stidia","Tazgait","Touahria"],"28":["Ain El Hadjel","Ain El Melh","Ain Fares","Ain Khadra","Ain Rich","Belaiba","Ben Srour","Beni Ilmane","Benzouh","Berhoum","Bir Foda","Bou Saada","Bouti Sayeh","Chellal","Dehahna","Djebel Messaad","El Hamel","El Houamed","Hammam Dalaa","Khettouti Sed El Jir","Khoubana","M'cif","M'sila","M'tarfa","Maadid","Maarif","Magra","Medjedel","Menaa","Mohamed Boudiaf","Ouanougha","Ouled Addi Guebala","Ouled Derradj","Ouled Madhi","Ouled Mansour","Ouled Sidi Brahim","Ouled Slimane","Oulteme","Sidi Aissa","Sidi Ameur","Sidi Hadjeres","Sidi M'hamed","Slim","Souamaa","Tamsa","Tarmount"],"29":["Ain Fares","Ain Fekan","Ain Ferah","Ain Frass","Alaimia","Aouf","Benian","Bou Henni","Bouhanifia","Chorfa","El Bordj","El Gaada","El Ghomri","El Gueitena","El Hachem","El Keurt","El Mamounia","El Menaouer","Ferraguig","Froha","Gharrous","Ghriss","Guerdjoum","Hacine","Khalouia","Makhda","Maoussa","Mascara","Matemore","Mocta Douz","Mohammadia","Nesmot","Oggaz","Oued El Abtal","Oued Taria","Ras El Ain Amirouche","Sedjerara","Sehailia","Sidi Abdeldjebar","Sidi Abdelmoumene","Sidi Boussaid","Sidi Kada","Sig","Tighennif","Tizi","Zahana","Zelamta"],"30":["Ain Beida","El Borma","Hassi Ben Abdellah","Hassi Messaoud","N'goussa","Ouargla","Rouissat","Sidi Khouiled"],"31":["Ain Biya","Ain Kerma","Ain Turk","Arzew","Ben Freha","Bethioua","Bir El Djir","Boufatis","Bousfer","Boutlelis","El Ancar","El Braya","El Kerma","Es Senia","Gdyel","Hassi Ben Okba","Hassi Bounif","Hassi Mefsoukh","Marsat El Hadjadj","Mers El Kebir","Messerghin","Oran","Oued Tlelat","Sidi Ben Yebka","Sidi Chami","Tafraoui"],"32":["Ain El Orak","Arbaouat","Boualem","Bougtoub","Boussemghoun","Brezina","Cheguig","Chellala","El Bayadh","El Biodh Sidi Cheikh","El Bnoud","El Kheither","El Mehara","Ghassoul","Kef El Ahmar","Krakda","Rogassa","Sidi Ameur","Sidi Slimane","Sidi Tifour","Stitten","Tousmouline"],"33":["Bordj Omar Driss","Debdeb","Illizi","In Amenas"],"34":["Ain Taghrout","Ain Tesra","Belimour","Ben Daoud","Bir Kasdali","Bordj Bou Arreridj","Bordj Ghdir","Bordj Zemora","Colla","Djaafra","El Ach","El Achir","El Anseur","El Hamadia","El M'hir","El Main","Ghilassa","Haraza","Hasnaoua","Khelil","Ksour","Mansoura","Medjana","Ouled Brahem","Ouled Dahmane","Ouled Sidi Brahim","Rabta","Ras El Oued","Sidi Embarek","Tafreg","Taglait","Teniet En Nasr","Tesmart","Tixter"],"35":["Afir","Ammal","Baghlia","Ben Choud","Beni Amrane","Bordj Menaiel","Boudouaou","Boudouaou El Bahri","Boumerdes","Bouzegza Keddara","Chabet El Ameur","Corso","Dellys","Djinet","El Kharrouba","Hammedi","Isser","Khemis El Khechna","Larbatache","Leghata","Naciria","Ouled Aissa","Ouled Hedadj","Ouled Moussa","Si Mustapha","Sidi Daoud","Souk El Haad","Taourga","Thenia","Tidjelabine","Timezrit","Zemmouri"],"36":["Ain El Assel","Ain Kerma","Asfour","Ben M Hidi","Berrihane","Besbes","Bougous","Bouhadjar","Bouteldja","Chebaita Mokhtar","Chefia","Chihani","Drean","Echatt","El Aioun","El Kala","El Tarf","Hammam Beni Salah","Lac Des Oiseaux","Oued Zitoun","Raml Souk","Souarekh","Zerizer","Zitouna"],"37":["Oum El Assel","Tindouf"],"38":["Ammari","Beni Chaib","Beni Lahcene","Bordj Bounaama","Bordj El Emir Abdelkader","Bou Caid","Khemisti","Larbaa","Lardjem","Layoune","Lazharia","Maacem","Melaab","Ouled Bessem","Sidi Abed","Sidi Boutouchent","Sidi Lantri","Sidi Slimane","Tamellalet","Theniet El Had","Tissemsilt","Youssoufia"],"39":["Bayadha","Ben Guecha","Debila","Douar El Maa","El Ogla","El Oued","Guemar","Hamraia","Hassani Abdelkrim","Hassi Khalifa","Kouinine","Magrane","Mih Ouansa","Nakhla","Oued El Alenda","Ourmes","Reguiba","Robbah","Sidi Aoun","Taghzout","Taleb Larbi","Trifaoui"],"40":["Ain Touila","Babar","Baghai","Bouhmama","Chelia","Cherchar","Djellal","El Hamma","El Mahmal","El Oueldja","Ensigha","Kais","Khenchela","Khirane","M'sara","M'toussa","Ouled Rechache","Remila","Tamza","Taouzianat","Yabous"],"41":["Ain Soltane","Ain Zana","Bir Bouhouche","Drea","Haddada","Hanencha","Khedara","Khemissa","M'daourouche","Machroha","Merahna","Oued Kebrit","Ouled Driss","Ouled Moumen","Oum El Adhaim","Quillen","Ragouba","Safel El Ouiden","Sedrata","Sidi Fredj","Souk Ahras","Taoura","Terraguelt","Tiffech","Zaarouria","Zouabi"],"42":["Aghbal","Ahmer El Ain","Ain Tagourait","Attatba","Bou Haroun","Bou Ismail","Bourkika","Chaiba","Cherchell","Damous","Douaouda","Fouka","Gouraya","Hadjout","Hadjret Ennous","Khemisti","Kolea","Larhat","Menaceur","Merad","Messelmoun","Nador","Sidi Amar","Sidi Ghiles","Sidi Rached","Sidi Semiane","Tipaza"],"43":["Ahmed Rachedi","Ain Beida Harriche","Ain Mellouk","Ain Tine","Amira Arres","Benyahia Abderrahmane","Bouhatem","Chelghoum Laid","Chigara","Derrahi Bousselah","El Mechira","Elayadi Barbes","Ferdjioua","Grarem Gouga","Hamala","Mila","Minar Zarza","Oued Athmenia","Oued Endja","Oued Seguen","Ouled Khalouf","Rouached","Sidi Khelifa","Sidi Merouane","Tadjenanet","Tassadane Haddada","Teleghma","Terrai Bainem","Tessala","Tiberguent","Yahia Beniguecha","Zeghaia"],"44":["Ain Benian","Ain Bouyahia","Ain Defla","Ain Lechiakh","Ain Soltane","Ain Tork","Arib","Barbouche","Bathia","Belaas","Ben Allal","Bir Ould Khelifa","Bordj Emir Khaled","Boumedfaa","Bourached","Djelida","Djemaa Ouled Cheikh","Djendel","El Abadia","El Amra","El Attaf","El Maine","Hammam Righa","Hassania","Hoceinia","Khemis Miliana","Mekhatria","Miliana","Oued Chorfa","Oued Djemaa","Rouina","Sidi Lakhdar","Tacheta Zegagha","Tarik Ibn Ziad","Tiberkanine","Zeddine"],"45":["Ain Ben Khelil","Ain Safra","Assela","Djeniane Bourzeg","El Biod","Kasdir","Makman Ben Amer","Mecheria","Moghrar","Naama","Sfissifa","Tiout"],"46":["Aghlal","Ain El Arbaa","Ain Kihal","Ain Temouchent","Ain Tolba","Aoubellil","Beni Saf","Bouzedjar","Chaabat El Ham","Chentouf","El Amria","El Malah","El Messaid","Emir Abdelkader","Hammam Bouhadjar","Hassasna","Hassi El Ghella","Oued Berkeche","Oued Sebbah","Ouled Boudjemaa","Ouled Kihal","Oulhaca El Gheraba","Sidi Ben Adda","Sidi Boumediene","Sidi Ouriache","Sidi Safi","Tamzoura","Terga"],"47":["Berriane","Bounoura","Dhayet Bendhahoua","El Atteuf","El Guerrara","Ghardaia","Mansoura","Metlili","Sebseb","Zelfana"],"48":["Ain Rahma","Ain Tarek","Ammi Moussa","Belaassel Bouzagza","Bendaoud","Beni Dergoun","Beni Zentis","Dar Ben Abdelah","Djidiouia","El Guettar","El H'madna","El Hassi","El Matmar","El Ouldja","Had Echkalla","Hamri","Kalaa","Lahlef","Mazouna","Mediouna","Mendes","Merdja Sidi Abed","Ouarizane","Oued El Djemaa","Oued Essalem","Oued Rhiou","Ouled Aiche","Ouled Sidi Mihoub","Ramka","Relizane","Sidi Khettab","Sidi Lazreg","Sidi M'hamed Benali","Sidi M'hamed Benaouda","Sidi Saada","Souk El Had","Yellel","Zemmoura"],"49":["Aougrout","Charouine","Deldoul","Ksar Kaddour","Metarfa","Ouled Aissa","Ouled Said","Talmine","Timimoun","Tinerkouk"],"51":["Besbes","Chaiba","Doucen","Ouled Djellal"],"52":["Beni Abbes","Beni Ikhlef","El Ouata","Igli","Kerzaz","Ksabi","Ouled Khoudir","Tabelbala","Tamtert","Timoudi"],"53":["Foggaret Azzaouia","In Ghar","In Salah"],"55":["Benaceur","Blidet Amor","El Alia","El Hadjira","Megarine","Mnaguer","Nezla","Sidi Slimane","Taibet","Tebesbest","Temacine","Touggourt","Zaouia El Abidia"],"56":["Bordj El Haouasse","Djanet"],"57":["Djamaa","El M'ghair","Mrara","Oum Touyour","Sidi Amrane","Sidi Khelil","Still","Tenedla"],"58":["El Meniaa","Hassi Fehal","Hassi Gara"]};
+const stopdeskData={"1":["Adrar"],"2":["Chlef","Tenes"],"3":["Laghouat"],"4":["Ain Fekroune","Oum El Bouaghi"],"5":["Barika","Batna"],"6":["Bejaia","Kherrata"],"7":["Biskra"],"8":["Bechar"],"9":["Beni Mered","Blida","Boufarik","Bouinan","Ouled Yaich"],"10":["Bouira"],"11":["Tamanrasset"],"12":["Tebessa"],"13":["Sebdou","Tlemcen"],"14":["Ksar Chellala","Tiaret"],"15":["Tizi Ouzou"],"16":["Bab El Oued","Bab Ezzouar","Bir Touta","Cheraga","Djasr Kasentina","Kouba","Reghaia"],"17":["Ain Oussera","Djelfa"],"18":["Jijel"],"19":["El Eulma","Setif"],"20":["Saida"],"21":["El Arrouch","Skikda"],"22":["Sidi Bel Abbes"],"23":["Annaba","El Bouni"],"24":["Guelma"],"25":["Constantine","El Khroub"],"26":["Medea"],"27":["Mazagran","Mostaganem"],"28":["Bou Saada","M'sila"],"29":["Mascara","Sig"],"30":["Ouargla"],"31":["Bir El Djir","Oran","Sidi Chami"],"32":["El Bayadh"],"33":["Illizi"],"34":["Bordj Bou Arreridj"],"35":["Bordj Menaiel","Boumerdes"],"36":["El Tarf"],"37":["Tindouf"],"38":["Tissemsilt"],"39":["El Oued"],"40":["Khenchela"],"41":["Souk Ahras"],"42":["Kolea","Tipaza"],"43":["Mila"],"44":["Ain Defla","Khemis Miliana"],"45":["Mecheria"],"46":["Ain Temouchent"],"47":["Ghardaia"],"48":["Relizane"],"49":["Timimoun"],"51":["Ouled Djellal"],"52":["Beni Abbes","Beni Ikhlef","El Ouata","Igli","Kerzaz","Ksabi","Ouled Khoudir","Tabelbala","Tamtert","Timoudi"],"53":["In Salah"],"55":["Touggourt"],"56":["Bordj El Haouasse","Djanet"],"57":["Djamaa","El M'ghair","Mrara","Oum Touyour","Sidi Amrane","Sidi Khelil","Still","Tenedla"],"58":["El Meniaa"]};
 
-const communeData = {"1":["Adrar","Akabli","Aoulef","Bouda","Fenoughil","In Zghmir","Ouled Ahmed Timmi","Reggane","Sali","Sebaa","Tamantit","Tamest","Timekten","Tit","Tsabit","Zaouiet Kounta"],"2":["Abou El Hassan","Ain Merane","Benairia","Beni Bouattab","Beni Haoua","Beni Rached","Boukadir","Bouzeghaia","Breira","Chettia","Chlef","Dahra","El Hadjadj","El Karimia","El Marsa","Harchoun","Herenfa","Labiod Medjadja","Moussadek","Oued Fodda","Oude Goussine","Oude Sly","Ouled Abbes","Ouled Ben Abdelkader","Ouled Fares","Oum Drou","Sendjas","Sidi Abderrahmane","Sidi Akkacha","Sobha","Tadjena","Talassa","Taougrite","Tenes","Zeboudja"],"3":["Aflou","Ain Madhi","Ain Sidi Ali","Beidha","Benacer Benchohra","Brida","El Assafia","El Ghicha","El Haouaita","Gueltat Sidi Saad","Hadj Mechri","Hassi Delaa","Hassi R'mel","Kheneg","Ksar El Hirane","Laghouat","Oued M'zi","Oued Morra","Sebgag","Sidi Bouzid","Sidi Makhlouf","Tadjemout","Tadjrouna","Taouiala"],"4":["Ain Babouche","Ain Beida","Ain Diss","Ain Fekroune","Ain Kercha","Ain M'lila","Ain Zitoun","Behir Chergui","Berriche","Bir Chouhada","Dhala","El Amiria","El Belala","El Djazia","El Fedjoudj Boughrara Sa","El Harmilia","Fkirina","Hanchir Toumghani","Ksar Sbahi","Meskiana","Oued Nini","Ouled Gacem","Ouled Hamla","Ouled Zouai","Oum El Bouaghi","Rahia","Sigus","Souk Naamane","Zorg"],"5":["Ain Djasser","Ain Touta","Ain Yagout","Arris","Azil Abedelkader","Barika","Batna","Beni Foudhala El Hakania","Bitam","Boulhilat","Boumagueur","Boumia","Bouzina","Chemora","Chir","Djerma","Djezzar","El Hassi","El Madher","Fesdis","Foum Toub","Ghassira","Gosbat","Guigba","Hidoussa","Ichmoul","Inoughissen","Ksar Bellezma","Larbaa","Lazrou","Lemsane","M Doukal","Maafa","Menaa","Merouana","N Gaous","Oued Chaaba","Oued El Ma","Oued Taga","Ouled Ammar","Ouled Aouf","Ouled Fadel","Ouled Sellem","Ouled Si Slimane","Ouyoun El Assafir","Rahbat","Ras El Aioun","Sefiane","Seggana","Seriana","T Kout","Talkhamt","Taxlent","Tazoult","Teniet El Abed","Tighanimine","Tigharghar","Tilatou","Timgad","Zanet El Beida"],"6":["Adekar","Ait R'zine","Ait Smail","Akbou","Akfadou","Amalou","Amizour","Aokas","Barbacha","Bejaia","Beni Dejllil","Beni K'sila","Beni Mallikeche","Benimaouche","Boudjellil","Bouhamza","Boukhelifa","Chellata","Chemini","Darghina","Dra El Caid","El Kseur","Fenaia Il Maten","Feraoun","Ighil Ali","Ighram","Kendira","Kherrata","Leflaye","M'cisna","Melbou","Oued Ghir","Ouzellaguene","Seddouk","Sidi Aich","Sidi Ayad","Smaoun","Souk El Tenine","Souk Oufella","Tala Hamza","Tamokra","Tamridjet","Taourit Ighil","Taskriout","Tazmalt","Tibane","Tichy","Tifra","Timezrit","Tinebdar","Tizi N'berber","Toudja"],"7":["Ain Naga","Ain Zaatout","Biskra","Bordj Ben Azzouz","Bouchagroun","Branis","Chetma","Djemorah","El Feidh","El Ghrous","El Hadjab","El Haouch","El Kantara","El Outaya","Foughala","Khenguet Sidi Nadji","Lichana","Lioua","M'chouneche","M'lili","Mekhadma","Meziraa","Oumache","Ourlal","Sidi Okba","Tolga","Zeribet El Oued"],"8":["Abadla","Bechar","Beni Ounif","Boukais","Erg Ferradj","Kenadsa","Lahmar","Mechraa H.boumediene","Meridja","Mogheul","Taghit"],"9":["Ain Romana","Beni Mered","Beni Tamou","Benkhelil","Blida","Bouarfa","Boufarik","Bougara","Bouinan","Chebli","Chiffa","Chrea","Djebabra","El Affroun","Guerrouaou","Hammam Melouane","Larbaa","Meftah","Mouzaia","Oued Djer","Oued El Alleug","Ouled Slama","Ouled Yaich","Souhane","Souma"],"10":["Aghbalou","Ahl El Ksar","Ain Bessem","Ain El Hadjar","Ain Laloui","Ain Turk","Ait Laaziz","Aomar","Bechloul","Bir Ghbalou","Bordj Okhriss","Bouderbala","Bouira","Boukram","Chorfa","Dechmia","Dirah","Djebahia","El Adjiba","El Asnam","El Hachimia","El Hakimia","El Khabouzia","El Mokrani","Guerrouma","Hadjera Zerga","Haizer","Hanif","Kadiria","Lakhdaria","M Chedallah","Maala","Mamora","Mezdour","Oued El Berdi","Ouled Rached","Raouraoua","Ridane","Saharidj","Souk El Khemis","Sour El Ghozlane","Taghzout","Taguedite","Taourirt","Z'barbar"],"11":["Abalessa","Ain Amguel","Idles","Tamanrasset","Tazrouk"],"12":["Ain Zerga","Bedjene","Bekkaria","Bir Dheheb","Bir El Ater","Bir Mokkadem","Boukhadra","Boulhaf Dyr","Cheria","El Aouinet","El Houidjbet","El Kouif","El Malabiod","El Meridj","El Mezeraa","El Ogla","El Ogla El Malha","Ferkane","Guorriguer","Hammamet","Morssot","Negrine","Ouenza","Oum Ali","Saf Saf El Ouesra","Stah Guentis","Tebessa","Telidjen"],"13":["Ain Fettah","Ain Fezza","Ain Ghoraba","Ain Kebira","Ain Nehala","Ain Tallout","Ain Youcef","Amieur","Azails","Bab El Assa","Beni Bahdel","Beni Boussaid","Beni Khaled","Beni Mester","Beni Ouarsous","Beni Smiel","Beni Snous","Bensekrane","Bouhlou","Bouihi","Chetouane","Dar Yaghmouracene","Djebala","El Aricha","El Fehoul","El Gor","Fellaoucene","Ghazaouet","Hammam Boughrara","Hennaya","Honaine","Maghnia","Mansourah","Marsa Ben M'hidi","Msirda Fouaga","Nedroma","Oued Chouly","Ouled Mimoun","Ouled Riyah","Remchi","Sabra","Sebbaa Chioukh","Sebdou","Sidi Abdelli","Sidi Djilali","Sidi Medjahed","Souahlia","Souani","Souk Tleta","Terny Beni Hediel","Tianet","Tlemcen","Zenata"],"14":["Ain Bouchekif","Ain Deheb","Ain El Hadid","Ain Kermes","Ain Zarit","Bougara","Chehaima","Dahmouni","Djebilet Rosfa","Djillali Ben Amar","Faidja","Frenda","Guertoufa","Hamadia","Ksar Chellala","Madna","Mahdia","Mechraa Safa","Medrissa","Medroussa","Meghila","Mellakou","Nadorah","Naima","Oued Lilli","Rahouia","Rechaiga","Sebaine","Sebt","Serghine","Si Abdelghani","Sidi Abderrahmane","Sidi Ali Mellal","Sidi Bakhti","Sidi Hosni","Sougueur","Tagdemt","Takhemaret","Tiaret","Tidda","Tousnina","Zmalet El Emir Abdelkade"],"15":["Abi Youcef","Aghribs","Agouni Gueghrane","Ain El Hammam","Ain Zaouia","Ait Aggouacha","Ait Bouaddou","Ait Boumehdi","Ait Chafaa","Ait Khellili","Ait Mahmoud","Ait Oumalou","Ait Toudert","Ait Yahia","Ait Yahia Moussa","Akbil","Akerrou","Assi Youcef","Azazga","Azeffoun","Beni Aissi","Beni Douala","Beni Yenni","Beni Zikki","Beni Zmenzer","Boghni","Boudjima","Bounouh","Bouzeguene","Djebel Aissa Mimoun","Draa Ben Khedda","Draa El Mizan","Freha","Frikat","Iboudrarene","Idjeur","Iferhounene","Ifigha","Iflissen","Illilten","Illoula Oumalou","Imsouhal","Irdjen","Larba Nath Irathen","Larbaa Nath Irathen","M'kira","Maatkas","Makouda","Mechtras","Mekla","Mizrana","Ouacif","Ouadhias","Ouaguenoune","Sidi Naamane","Souamaa","Souk El Thenine","Tadmait","Tigzirt","Timizart","Tirmitine","Tizi Ghenif","Tizi N'tleta","Tizi Ouzou","Tizi Rached","Yakourene","Yatafene","Zekri"],"16":["Ain Benian","Ain Taya","Alger Centre","Bab El Oued","Bab Ezzouar","Baba Hesen","Bachedjerah","Bains Romains","Baraki","Ben Aknoun","Beni Messous","Bir Mourad Rais","Bir Touta","Birkhadem","Boloqhine Ibnou Ziri","Bordj El Bahri","Bordj El Kiffan","Bourouba","Bouzareah","Casbah","Cheraga","Dar El Beida","Dely Ibrahim","Djasr Kasentina","Douira","Draria","El Achour","El Biar","El Harrach","El Madania","El Magharia","El Merssa","El Mouradia","Herraoua","Hussein Dey","Hydra","Kheraisia","Kouba","Les Eucalyptus","Maalma","Mohamed Belouzdad","Mohammadia","Oued Koriche","Oued Smar","Ouled Chebel","Ouled Fayet","Rahmania","Rais Hamidou","Reghaia","Rouiba","Sehaoula","Setaouali","Sidi M'hamed","Sidi Moussa","Souidania","Tessala El Merdja","Zeralda"],"17":["Ain Chouhada","Ain El Ibel","Ain Fekka","Ain Maabed","Ain Oussera","Amourah","Benhar","Benyagoub","Birine","Bouira Lahdab","Charef","Dar Chioukh","Deldoul","Djelfa","Douis","El Guedid","El Idrissia","El Khemis","Faidh El Botma","Guernini","Had Sahary","Hassi Bahbah","Hassi El Euch","Hassi Fedoul","M Liliha","Messaad","Moudjebara","Sed Rahal","Selmana","Sidi Baizid","Sidi Ladjel","Tadmit","Zaafrane","Zaccar"],"18":["Bordj Tahar","Boudria Beniyadjis","Bouraoui Belhadef","Boussif Ouled Askeur","Chahna","Chekfa","Djemaa Beni Habibi","Djimla","El Ancer","El Aouana","El Kennar Nouchfi","El Milia","Emir Abdelkader","Erraguene","Ghebala","Jijel","Khiri Oued Adjoul","Kouas","Oudjana","Ouled Rabah","Ouled Yahia Khadrouch","Selma Benziada","Settara","Sidi Abdelaziz","Sidi Marouf","Taher","Texena","Ziama Mansouria"],"19":["Ain Abessa","Ain Arnat","Ain Azel","Ain El Kebira","Ain Lahdjar","Ain Legradj","Ain Oulmane","Ain Roua","Ain Sebt","Ait Naoual Mezada","Ait Tizi","Amoucha","Babor","Bazer Sakra","Beidha Bordj","Bellaa","Beni Aziz","Beni Chebana","Beni Fouda","Beni Mouhli","Beni Ouartilane","Beni Oussine","Bir El Arch","Bir Haddada","Bouandas","Bougaa","Bousselam","Boutaleb","Dehamcha","Djemila","Draa Kebila","El Eulma","El Ouldja","El Ouricia","Guellal","Guelta Zerka","Guenzet","Guidjel","Hamam Soukhna","Hamma","Hammam Guergour","Harbil","Ksar El Abtal","Maaouia","Maouaklane","Mezloug","Oued El Barad","Ouled Addouane","Ouled Sabor","Ouled Si Ahmed","Ouled Tebben","Rosfa","Salah Bey","Serdj El Ghoul","Setif","Tachouda","Tala Ifacene","Taya","Tella","Tizi N'bechar"],"20":["Ain El Hadjar","Ain Sekhouna","Ain Soltane","Doui Thabet","El Hassasna","Hounet","Maamora","Moulay Larbi","Ouled Brahim","Ouled Khaled","Saida","Sidi Ahmed","Sidi Amar","Sidi Boubekeur","Tircine","Youb"],"21":["Ain Bouziane","Ain Charchar","Ain Kechera","Ain Zouit","Azzaba","Bekkouche Lakhdar","Ben Azzouz","Beni Bechir","Beni Oulbane","Beni Zid","Bin El Ouiden","Bouchetata","Cheraia","Collo","Djendel Saadi Mohamed","El Arrouch","El Ghedir","El Hadaiek","El Marsa","Emjez Edchich","Es Sebt","Filfila","Hamadi Krouma","Kanoua","Kerkera","Khenag Mayoum","Oued Zhour","Ouldja Boulbalout","Ouled Attia","Ouled Habbeba","Oum Toub","Ramdane Djamel","Salah Bouchaour","Sidi Mezghiche","Skikda","Tamalous","Zerdezas","Zitouna"],"22":["Ain Adden","Ain El Berd","Ain Kada","Ain Thrid","Ain Tindamine","Amarnas","Badredine El Mokrani","Belarbi","Ben Badis","Benachiba Chelia","Bir El Hammam","Boudjebaa El Bordj","Boukhanafis","Chetouane Belaila","Dhaya","El Hacaiba","Hassi Dahou","Hassi Zahana","Lamtar","M'cid","Makedra","Marhoum","Merine","Mezaourou","Mostefa Ben Brahim","Moulay Slissen","Oued Sebaa","Oued Sefioun","Oued Taourira","Ras El Ma","Redjem Demouche","Sehala Thaoura","Sfissef","Sidi Ali Benyoub","Sidi Ali Boussidi","Sidi Bel Abbes","Sidi Brahim","Sidi Chaib","Sidi Dahou Zairs","Sidi Hamadouche","Sidi Khaled","Sidi Lahcene","Sidi Yacoub","Tabia","Tafissour","Taoudmout","Teghalimet","Telagh","Tessala","Tilmouni","Zerouala"],"23":["Ain Berda","Annaba","Berrahel","Chetaibi","Cheurfa","El Bouni","El Hadjar","Eulma","Oued El Aneb","Seraidi","Sidi Amar","Treat"],"24":["Ain Ben Beida","Ain Hessania","Ain Larbi","Ain Makhlouf","Ain Reggada","Belkheir","Ben Djarah","Beni Mezline","Bordj Sabat","Bou Hachana","Bou Hamdane","Bouati Mahmoud","Bouchegouf","Bouhamra Ahmed","Dahouara","Djeballah Khemissi","El Fedjoudj","Guelaat Bou Sbaa","Guelma","Hamam Debagh","Hammam N'bail","Heliopolis","Khezara","Medjez Amar","Medjez Sfa","Nechmaya","Oued Cheham","Oued Fragha","Oued Zenati","Ras El Agba","Roknia","Sellaoua Announa","Sidi Sandel","Tamlouka"],"25":["Ain Abid","Ain Smara","Ben Badis","Beni Hamidene","Constantine","Didouche Mourad","El Khroub","Hamma Bouziane","Ibn Ziad","Messaoud Boujeriou","Ouled Rahmouni","Zighoud Youcef"],"26":["Ain Boucif","Ain Ouksir","Aissaouia","Aziz","Baata","Ben Chicao","Beni Slimane","Berrouaghia","Bir Ben Laabed","Boghar","Bouaiche","Bouaichoune","Bouchrahil","Boughzoul","Bouskene","Chabounia","Chelalet El Adhaoura","Cheniguel","Damiat","Derrag","Deux Bassins","Djouab","Draa Essamar","El Azizia","El Guelbelkebir","El Hamdania","El Omaria","El Ouinet","Hannacha","Kef Lakhdar","Khams Djouamaa","Ksar El Boukhari","Maghraoua","Medea","Medjebar","Meftaha","Mezerana","Mihoub","Ouamri","Oued Harbil","Ouled Antar","Ouled Bouachra","Ouled Brahim","Ouled Deid","Ouled Hellal","Ouled Maaref","Oum El Djellil","Ouzera","Rebaia","Saneg","Sedraya","Seghouane","Si Mahdjoub","Sidi Demed","Sidi Naamane","Sidi Rabie","Sidi Zahar","Sidi Ziane","Souagui","Tablat","Tafraout","Tamesguida","Tletat Ed Douair","Zoubiria"],"27":["Achaacha","Ain Boudinar","Ain Nouissy","Ain Sidi Cherif","Ain Tedles","Benabdelmalek Ramdane","Bouguirat","Fornaka","Hadjadj","Hassi Mameche","Hassiane","Khadra","Kheir Eddine","Mansourah","Mazagran","Mesra","Mostaganem","Nekmaria","Oued El Kheir","Ouled Boughalem","Ouled Maalah","Safsaf","Sayada","Sidi Ali","Sidi Belaattar","Sidi Lakhdar","Sirat","Souaflia","Sour","Stidia","Tazgait","Touahria"],"28":["Ain El Hadjel","Ain El Melh","Ain Fares","Ain Khadra","Ain Rich","Belaiba","Ben Srour","Beni Ilmane","Benzouh","Berhoum","Bir Foda","Bou Saada","Bouti Sayeh","Chellal","Dehahna","Djebel Messaad","El Hamel","El Houamed","Hammam Dalaa","Khettouti Sed El Jir","Khoubana","M'cif","M'sila","M'tarfa","Maadid","Maarif","Magra","Medjedel","Menaa","Mohamed Boudiaf","Ouanougha","Ouled Addi Guebala","Ouled Derradj","Ouled Madhi","Ouled Mansour","Ouled Sidi Brahim","Ouled Slimane","Oulteme","Sidi Aissa","Sidi Ameur","Sidi Hadjeres","Sidi M'hamed","Slim","Souamaa","Tamsa","Tarmount"],"29":["Ain Fares","Ain Fekan","Ain Ferah","Ain Frass","Alaimia","Aouf","Benian","Bou Henni","Bouhanifia","Chorfa","El Bordj","El Gaada","El Ghomri","El Gueitena","El Hachem","El Keurt","El Mamounia","El Menaouer","Ferraguig","Froha","Gharrous","Ghriss","Guerdjoum","Hacine","Khalouia","Makhda","Maoussa","Mascara","Matemore","Mocta Douz","Mohammadia","Nesmot","Oggaz","Oued El Abtal","Oued Taria","Ras El Ain Amirouche","Sedjerara","Sehailia","Sidi Abdeldjebar","Sidi Abdelmoumene","Sidi Boussaid","Sidi Kada","Sig","Tighennif","Tizi","Zahana","Zelamta"],"30":["Ain Beida","El Borma","Hassi Ben Abdellah","Hassi Messaoud","N'goussa","Ouargla","Rouissat","Sidi Khouiled"],"31":["Ain Biya","Ain Kerma","Ain Turk","Arzew","Ben Freha","Bethioua","Bir El Djir","Boufatis","Bousfer","Boutlelis","El Ancar","El Braya","El Kerma","Es Senia","Gdyel","Hassi Ben Okba","Hassi Bounif","Hassi Mefsoukh","Marsat El Hadjadj","Mers El Kebir","Messerghin","Oran","Oued Tlelat","Sidi Ben Yebka","Sidi Chami","Tafraoui"],"32":["Ain El Orak","Arbaouat","Boualem","Bougtoub","Boussemghoun","Brezina","Cheguig","Chellala","El Bayadh","El Biodh Sidi Cheikh","El Bnoud","El Kheither","El Mehara","Ghassoul","Kef El Ahmar","Krakda","Rogassa","Sidi Ameur","Sidi Slimane","Sidi Tifour","Stitten","Tousmouline"],"33":["Bordj Omar Driss","Debdeb","Illizi","In Amenas"],"34":["Ain Taghrout","Ain Tesra","Belimour","Ben Daoud","Bir Kasdali","Bordj Bou Arreridj","Bordj Ghdir","Bordj Zemora","Colla","Djaafra","El Ach","El Achir","El Anseur","El Hamadia","El M'hir","El Main","Ghilassa","Haraza","Hasnaoua","Khelil","Ksour","Mansoura","Medjana","Ouled Brahem","Ouled Dahmane","Ouled Sidi Brahim","Rabta","Ras El Oued","Sidi Embarek","Tafreg","Taglait","Teniet En Nasr","Tesmart","Tixter"],"35":["Afir","Ammal","Baghlia","Ben Choud","Beni Amrane","Bordj Menaiel","Boudouaou","Boudouaou El Bahri","Boumerdes","Bouzegza Keddara","Chabet El Ameur","Corso","Dellys","Djinet","El Kharrouba","Hammedi","Isser","Khemis El Khechna","Larbatache","Leghata","Naciria","Ouled Aissa","Ouled Hedadj","Ouled Moussa","Si Mustapha","Sidi Daoud","Souk El Haad","Taourga","Thenia","Tidjelabine","Timezrit","Zemmouri"],"36":["Ain El Assel","Ain Kerma","Asfour","Ben M Hidi","Berrihane","Besbes","Bougous","Bouhadjar","Bouteldja","Chebaita Mokhtar","Chefia","Chihani","Drean","Echatt","El Aioun","El Kala","El Tarf","Hammam Beni Salah","Lac Des Oiseaux","Oued Zitoun","Raml Souk","Souarekh","Zerizer","Zitouna"],"37":["Oum El Assel","Tindouf"],"38":["Ammari","Beni Chaib","Beni Lahcene","Bordj Bounaama","Bordj El Emir Abdelkader","Bou Caid","Khemisti","Larbaa","Lardjem","Layoune","Lazharia","Maacem","Melaab","Ouled Bessem","Sidi Abed","Sidi Boutouchent","Sidi Lantri","Sidi Slimane","Tamellalet","Theniet El Had","Tissemsilt","Youssoufia"],"39":["Bayadha","Ben Guecha","Debila","Douar El Maa","El Ogla","El Oued","Guemar","Hamraia","Hassani Abdelkrim","Hassi Khalifa","Kouinine","Magrane","Mih Ouansa","Nakhla","Oued El Alenda","Ourmes","Reguiba","Robbah","Sidi Aoun","Taghzout","Taleb Larbi","Trifaoui"],"40":["Ain Touila","Babar","Baghai","Bouhmama","Chelia","Cherchar","Djellal","El Hamma","El Mahmal","El Oueldja","Ensigha","Kais","Khenchela","Khirane","M'sara","M'toussa","Ouled Rechache","Remila","Tamza","Taouzianat","Yabous"],"41":["Ain Soltane","Ain Zana","Bir Bouhouche","Drea","Haddada","Hanencha","Khedara","Khemissa","M'daourouche","Machroha","Merahna","Oued Kebrit","Ouled Driss","Ouled Moumen","Oum El Adhaim","Quillen","Ragouba","Safel El Ouiden","Sedrata","Sidi Fredj","Souk Ahras","Taoura","Terraguelt","Tiffech","Zaarouria","Zouabi"],"42":["Aghbal","Ahmer El Ain","Ain Tagourait","Attatba","Bou Haroun","Bou Ismail","Bourkika","Chaiba","Cherchell","Damous","Douaouda","Fouka","Gouraya","Hadjout","Hadjret Ennous","Khemisti","Kolea","Larhat","Menaceur","Merad","Messelmoun","Nador","Sidi Amar","Sidi Ghiles","Sidi Rached","Sidi Semiane","Tipaza"],"43":["Ahmed Rachedi","Ain Beida Harriche","Ain Mellouk","Ain Tine","Amira Arres","Benyahia Abderrahmane","Bouhatem","Chelghoum Laid","Chigara","Derrahi Bousselah","El Mechira","Elayadi Barbes","Ferdjioua","Grarem Gouga","Hamala","Mila","Minar Zarza","Oued Athmenia","Oued Endja","Oued Seguen","Ouled Khalouf","Rouached","Sidi Khelifa","Sidi Merouane","Tadjenanet","Tassadane Haddada","Teleghma","Terrai Bainem","Tessala","Tiberguent","Yahia Beniguecha","Zeghaia"],"44":["Ain Benian","Ain Bouyahia","Ain Defla","Ain Lechiakh","Ain Soltane","Ain Tork","Arib","Barbouche","Bathia","Belaas","Ben Allal","Bir Ould Khelifa","Bordj Emir Khaled","Boumedfaa","Bourached","Djelida","Djemaa Ouled Cheikh","Djendel","El Abadia","El Amra","El Attaf","El Maine","Hammam Righa","Hassania","Hoceinia","Khemis Miliana","Mekhatria","Miliana","Oued Chorfa","Oued Djemaa","Rouina","Sidi Lakhdar","Tacheta Zegagha","Tarik Ibn Ziad","Tiberkanine","Zeddine"],"45":["Ain Ben Khelil","Ain Safra","Assela","Djeniane Bourzeg","El Biod","Kasdir","Makman Ben Amer","Mecheria","Moghrar","Naama","Sfissifa","Tiout"],"46":["Aghlal","Ain El Arbaa","Ain Kihal","Ain Temouchent","Ain Tolba","Aoubellil","Beni Saf","Bouzedjar","Chaabat El Ham","Chentouf","El Amria","El Malah","El Messaid","Emir Abdelkader","Hammam Bouhadjar","Hassasna","Hassi El Ghella","Oued Berkeche","Oued Sebbah","Ouled Boudjemaa","Ouled Kihal","Oulhaca El Gheraba","Sidi Ben Adda","Sidi Boumediene","Sidi Ouriache","Sidi Safi","Tamzoura","Terga"],"47":["Berriane","Bounoura","Dhayet Bendhahoua","El Atteuf","El Guerrara","Ghardaia","Mansoura","Metlili","Sebseb","Zelfana"],"48":["Ain Rahma","Ain Tarek","Ammi Moussa","Belaassel Bouzagza","Bendaoud","Beni Dergoun","Beni Zentis","Dar Ben Abdelah","Djidiouia","El Guettar","El H'madna","El Hassi","El Matmar","El Ouldja","Had Echkalla","Hamri","Kalaa","Lahlef","Mazouna","Mediouna","Mendes","Merdja Sidi Abed","Ouarizane","Oued El Djemaa","Oued Essalem","Oued Rhiou","Ouled Aiche","Ouled Sidi Mihoub","Ramka","Relizane","Sidi Khettab","Sidi Lazreg","Sidi M'hamed Benali","Sidi M'hamed Benaouda","Sidi Saada","Souk El Had","Yellel","Zemmoura"],"49":["Aougrout","Charouine","Deldoul","Ksar Kaddour","Metarfa","Ouled Aissa","Ouled Said","Talmine","Timimoun","Tinerkouk"],"51":["Besbes","Chaiba","Doucen","Ouled Djellal"],"52":["Beni Abbes","Beni Ikhlef","El Ouata","Igli","Kerzaz","Ksabi","Ouled Khoudir","Tabelbala","Tamtert","Timoudi"],"53":["Foggaret Azzaouia","In Ghar","In Salah"],"55":["Benaceur","Blidet Amor","El Alia","El Hadjira","Megarine","Mnaguer","Nezla","Sidi Slimane","Taibet","Tebesbest","Temacine","Touggourt","Zaouia El Abidia"],"56":["Bordj El Haouasse","Djanet"],"57":["Djamaa","El M'ghair","Mrara","Oum Touyour","Sidi Amrane","Sidi Khelil","Still","Tenedla"],"58":["El Meniaa","Hassi Fehal","Hassi Gara"]};
+let ckDelivery='home';
 
-const stopdeskData = {"1":["Adrar"],"2":["Chlef","Tenes"],"3":["Laghouat"],"4":["Ain Fekroune","Oum El Bouaghi"],"5":["Barika","Batna"],"6":["Bejaia","Kherrata"],"7":["Biskra"],"8":["Bechar"],"9":["Beni Mered","Blida","Boufarik","Bouinan","Ouled Yaich"],"10":["Bouira"],"11":["Tamanrasset"],"12":["Tebessa"],"13":["Sebdou","Tlemcen"],"14":["Ksar Chellala","Tiaret"],"15":["Tizi Ouzou"],"16":["Bab El Oued","Bab Ezzouar","Bir Touta","Cheraga","Djasr Kasentina","Kouba","Reghaia"],"17":["Ain Oussera","Djelfa"],"18":["Jijel"],"19":["El Eulma","Setif"],"20":["Saida"],"21":["El Arrouch","Skikda"],"22":["Sidi Bel Abbes"],"23":["Annaba","El Bouni"],"24":["Guelma"],"25":["Constantine","El Khroub"],"26":["Medea"],"27":["Mazagran","Mostaganem"],"28":["Bou Saada","M'sila"],"29":["Mascara","Sig"],"30":["Ouargla"],"31":["Bir El Djir","Oran","Sidi Chami"],"32":["El Bayadh"],"33":["Illizi"],"34":["Bordj Bou Arreridj"],"35":["Bordj Menaiel","Boumerdes"],"36":["El Tarf"],"37":["Tindouf"],"38":["Tissemsilt"],"39":["El Oued"],"40":["Khenchela"],"41":["Souk Ahras"],"42":["Kolea","Tipaza"],"43":["Mila"],"44":["Ain Defla","Khemis Miliana"],"45":["Mecheria"],"46":["Ain Temouchent"],"47":["Ghardaia"],"48":["Relizane"],"49":["Timimoun"],"51":["Ouled Djellal"],"52":["Beni Abbes","Beni Ikhlef","El Ouata","Igli","Kerzaz","Ksabi","Ouled Khoudir","Tabelbala","Tamtert","Timoudi"],"53":["In Salah"],"55":["Touggourt"],"56":["Bordj El Haouasse","Djanet"],"57":["Djamaa","El M'ghair","Mrara","Oum Touyour","Sidi Amrane","Sidi Khelil","Still","Tenedla"],"58":["El Meniaa"]};
-
-let ckDelivery = 'home';
-
-function ckSelectDelivery(type) {
-  ckDelivery = type;
-  document.getElementById('ckHomeBox').className = 'del-card' + (type==='home'?' active-home':'');
-  document.getElementById('ckOfficeBox').className = 'del-card' + (type==='office'?' active-office':'');
-  const w = document.getElementById('ckWilaya').value;
-  if (w) ckFillCommunes(w);
+function ckSel(t){
+  ckDelivery=t;
+  document.getElementById('ckHomeBox').className='del-card'+(t==='home'?' ah':'');
+  document.getElementById('ckOfficeBox').className='del-card'+(t==='office'?' ao':'');
+  const w=document.getElementById('ckWilaya').value;
+  if(w) ckFill(w);
 }
-
-function ckFillCommunes(w) {
-  const sel  = document.getElementById('ckCommune');
-  const data = ckDelivery === 'home' ? communeData : stopdeskData;
-  const prev = sel.value;
-  sel.innerHTML = '<option value="">اختر</option>';
-  (data[w] || []).forEach(n => {
-    const o = document.createElement('option');
-    o.value = n; o.textContent = n; sel.appendChild(o);
-  });
-  if ([...sel.options].some(o => o.value === prev)) sel.value = prev;
+function ckFill(w){
+  const s=document.getElementById('ckCommune');
+  const d=ckDelivery==='home'?communeData:stopdeskData;
+  const p=s.value;
+  s.innerHTML='<option value="">اختر</option>';
+  (d[w]||[]).forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;s.appendChild(o);});
+  if([...s.options].some(o=>o.value===p))s.value=p;
 }
-
-function ckUpdateCommunes() {
-  const w      = document.getElementById('ckWilaya').value;
-  const offBox = document.getElementById('ckOfficeBox');
-  if (RESTRICTED.includes(w)) {
-    offBox.style.display = 'none';
-    if (ckDelivery === 'office') ckSelectDelivery('home');
-  } else {
-    offBox.style.display = '';
-  }
-  if (w) ckFillCommunes(w);
+function ckUpdateCommunes(){
+  const w=document.getElementById('ckWilaya').value;
+  const ob=document.getElementById('ckOfficeBox');
+  if(RESTRICTED.includes(w)){ob.style.display='none';if(ckDelivery==='office')ckSel('home');}
+  else{ob.style.display='';}
+  if(w)ckFill(w);
 }
-
-function ckSubmit() {
-  const name    = document.getElementById('ckName').value.trim();
-  const phone   = document.getElementById('ckPhone').value.trim();
-  const wilSel  = document.getElementById('ckWilaya');
-  const commune = document.getElementById('ckCommune').value;
-  const regex   = /^0[567][0-9]{8}$/;
-
-  if (!name)              return alert('اكتب الاسم من فضلك');
-  if (!regex.test(phone)) return alert('رقم الهاتف يجب أن يكون 10 أرقام ويبدأ بـ 05 أو 06 أو 07');
-  if (!wilSel.value)      return alert('إختر الولاية من فضلك');
-  if (!commune)           return alert('إختر البلدية من فضلك');
-
-  const btn = document.getElementById('ckSubmitBtn');
-  btn.disabled = true; btn.innerText = '⏳ جاري إرسال الطلب...'; btn.style.opacity = '0.6';
-
-  const wTxt = wilSel.options[wilSel.selectedIndex].text.split('-');
-  const payload = JSON.stringify({
-    product:        'جهاز IPL لإزالة الشعر — 1,000,000 ومضة',
-    name, phone,
-    wilaya_num:     wTxt[0] ? String(parseInt(wTxt[0].trim(),10)) : wilSel.value,
-    wilaya_name:    wTxt[1] ? wTxt[1].trim() : wilSel.options[wilSel.selectedIndex].text,
-    commune,
-    delivery_type:  ckDelivery === 'home' ? 'توصيل للمنزل' : 'توصيل للمكتب',
-    delivery_price: 'مجانا',
-    total:          '12000 دج'
-  });
-
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', SCRIPT_URL, true);
+function ckSubmit(){
+  const name=document.getElementById('ckName').value.trim();
+  const phone=document.getElementById('ckPhone').value.trim();
+  const wSel=document.getElementById('ckWilaya');
+  const commune=document.getElementById('ckCommune').value;
+  const rx=/^0[567][0-9]{8}$/;
+  if(!name)return alert('اكتب الاسم من فضلك');
+  if(!rx.test(phone))return alert('رقم الهاتف يجب أن يكون 10 أرقام ويبدأ بـ 05 أو 06 أو 07');
+  if(!wSel.value)return alert('إختر الولاية من فضلك');
+  if(!commune)return alert('إختر البلدية من فضلك');
+  const btn=document.getElementById('ckSubmitBtn');
+  btn.disabled=true;btn.innerText='⏳ جاري إرسال الطلب...';btn.style.opacity='.6';
+  const wt=wSel.options[wSel.selectedIndex].text.split('-');
+  const payload=JSON.stringify({product:'جهاز IPL لإزالة الشعر — 1,000,000 ومضة',name,phone,wilaya_num:wt[0]?String(parseInt(wt[0].trim(),10)):wSel.value,wilaya_name:wt[1]?wt[1].trim():wSel.options[wSel.selectedIndex].text,commune,delivery_type:ckDelivery==='home'?'توصيل للمنزل':'توصيل للمكتب',delivery_price:'مجانا',total:'12000 دج'});
+  const xhr=new XMLHttpRequest();
+  xhr.open('POST',SCRIPT_URL,true);
   xhr.setRequestHeader('Content-Type','text/plain;charset=utf-8');
-  const done = () => {
-    document.getElementById('ckModal').classList.add('show');
-    btn.disabled = false; btn.innerText = 'تأكيد الطلب 🛒'; btn.style.opacity = '1';
-  };
-  xhr.onload = done; xhr.onerror = done;
-  xhr.send(payload);
+  const done=()=>{document.getElementById('ckModal').classList.add('show');btn.disabled=false;btn.innerText='تأكيد الطلب 🛒';btn.style.opacity='1';};
+  xhr.onload=done;xhr.onerror=done;xhr.send(payload);
 }
-
-function ckCloseModal() {
+function ckClose(){
   document.getElementById('ckModal').classList.remove('show');
-  const msg = 'شكراً على تعاملكم معنا. يرجى التواصل معنا من أجل أي استفسار بخصوص طلبك الأخير.';
-  window.open('https://wa.me/'+WHATSAPP_NUM+'?text='+encodeURIComponent(msg),'_blank');
+  const msg='شكراً على تعاملكم معنا. يرجى التواصل معنا من أجل أي استفسار بخصوص طلبك الأخير.';
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
   setTimeout(()=>location.reload(),1000);
 }
-
-function toggleFaq(el) {
-  el.parentElement.classList.toggle('open');
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  const ph = document.getElementById('ckPhone');
-  if (ph) {
-    ph.addEventListener('keypress', e => { if(!/[0-9]/.test(e.key)) e.preventDefault(); });
-    ph.addEventListener('input', function(){ this.value = this.value.replace(/[^0-9]/g,'').substring(0,10); });
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+window.addEventListener('DOMContentLoaded',()=>{
+  const ph=document.getElementById('ckPhone');
+  if(ph){
+    ph.addEventListener('keypress',e=>{if(!/[0-9]/.test(e.key))e.preventDefault();});
+    ph.addEventListener('input',function(){this.value=this.value.replace(/[^0-9]/g,'').substring(0,10);});
   }
-  document.getElementById('ckWilaya').addEventListener('change', ckUpdateCommunes);
+  document.getElementById('ckWilaya').addEventListener('change',ckUpdateCommunes);
 });
+
+// Float button show/hide
+const floatCta = document.getElementById('floatCta');
+const heroSection = document.querySelector('.hero');
+const offerSection = document.getElementById('offer');
+let heroVisible = true;
+let offerVisible = false;
+function updateFloat(){
+  if(heroVisible || offerVisible){ floatCta.classList.add('hidden'); }
+  else { floatCta.classList.remove('hidden'); }
+}
+new IntersectionObserver(e => { heroVisible = e[0].isIntersecting; updateFloat(); }, {threshold:0.05}).observe(heroSection);
+new IntersectionObserver(e => { offerVisible = e[0].isIntersecting; updateFloat(); }, {threshold:0.05}).observe(offerSection);
 </script>
+
+<button class="float-cta" id="floatCta" onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'})">
+  🛒 اطلبي الآن — مجاناً
+</button>
 </body>
 </html>
